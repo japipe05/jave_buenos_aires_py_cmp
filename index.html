@@ -204,3 +204,20 @@
        * In the following section you can use the store object to dispatch Kepler.gl actions
        * to add new data and customize behavior
        */
+
+
+
+
+
+
+              store.dispatch(keplerGl.addDataToMap({
+          datasets: loadedData.datasets,
+          config: loadedData.config,
+          options: {
+            centerMap: false
+          }
+        }));
+      }(KeplerGl, store))
+    </script>
+  </body>
+</html>
