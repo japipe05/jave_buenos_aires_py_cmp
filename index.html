@@ -192,3 +192,15 @@
         )
       }(React, ReactRedux, KeplerElement));
       /** END COMPONENTS **/
+   /** Render **/
+      (function render(react, reactDOM, app) {
+        reactDOM.render(app, document.getElementById('app'));
+      }(React, ReactDOM, app));
+    </script>
+    <!-- The next script will show how to interact directly with Kepler map store -->
+    <script>
+      /**
+       * Customize map.
+       * In the following section you can use the store object to dispatch Kepler.gl actions
+       * to add new data and customize behavior
+       */
