@@ -205,14 +205,11 @@
        * to add new data and customize behavior
        */
 
-      
-  const loadedData = keplerGl.KeplerGlSchema.load(
+    
+const loadedData = keplerGl.KeplerGlSchema.load(
           datasets,
           config
         );
-
-
-
               store.dispatch(keplerGl.addDataToMap({
           datasets: loadedData.datasets,
           config: loadedData.config,
