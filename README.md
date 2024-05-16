@@ -1,3 +1,7 @@
+# Instalacion 
+>docker-compose up -d
+
+
 cargar archivos pesados
 > git lfs install               
 > git lfs track "*.gl.html"     
@@ -5,3 +9,6 @@ cargar archivos pesados
 > git add .                     
 > git commit -m "carga pureba"  
 > git push  
+
+
+docker
