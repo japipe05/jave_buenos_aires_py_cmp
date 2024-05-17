@@ -1,4 +1,8 @@
 # Instalacion
+pip install cassandra-driver
+
+
+
 docker-compose up -d
 
 # Subir archivos pesados 
