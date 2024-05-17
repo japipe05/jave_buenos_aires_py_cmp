@@ -1,47 +1,67 @@
-version: '3'
+version: '3.8'
 
 services:
-  postgres:
-    image: postgis/postgis
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    networks:
-      - backend
-
   cassandra:
-    image: cassandra
+    image: cassandra:4.0
+    container_name: ${CASSANDRA_CONTAINER_NAME}
     environment:
-      - CASSANDRA_LISTEN_ADDRESS=cassandra
-    ports:
-      - "9042:9042"
+      - CASSANDRA_CLUSTER_NAME=${CASSANDRA_CLUSTER_NAME}
+      - CASSANDRA_DC=${CASSANDRA_DC}
+      - CASSANDRA_RACK=${CASSANDRA_RACK}
+      - CASSANDRA_SEEDS=${CASSANDRA_CONTAINER_NAME}
+      - MAX_HEAP_SIZE=512M
+      - HEAP_NEWSIZE=100M
     volumes:
-      - cassandra_data:/var/lib/cassandra/data
-    networks:
-      - backend
-
-  mongo:
-    image: mongo
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
-      MONGO_DB: ${MONGO_DB}
+      - cassandra_data:/var/lib/cassandra
     ports:
-      - "27017:27017"
+      - "${CASSANDRA_PORT}:9042"
+    networks:
+      - database_net
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: '1G'
+        reservations:
+          cpus: '0.5'
+          memory: '512M'
+    restart: unless-stopped
+
+  mongodb:
+    image: mongo:latest
+    container_name: ${MONGO_CONTAINER_NAME}
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+      - MONGO_INITDB_DATABASE=${MONGO_INITDB_DATABASE}
     volumes:
       - mongo_data:/data/db
+    ports:
+      - "${MONGO_PORT}:27017"
     networks:
-      - backend
+      - database_net
+    restart: unless-stopped
 
-networks:
-  backend:
+  postgis:
+    image: postgis/postgis:latest
+    container_name: ${POSTGRES_CONTAINER_NAME}
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - postgis_data:/var/lib/postgresql/data
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    networks:
+      - database_net
+    restart: unless-stopped
 
 volumes:
-  postgres_data:
   cassandra_data:
   mongo_data:
+  postgis_data:
+
+networks:
+  database_net:
+    driver: bridge
