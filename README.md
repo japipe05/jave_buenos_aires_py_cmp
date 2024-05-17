@@ -17,3 +17,19 @@ docker
 # prueba 3
 # prueba 4
 # prueba 5 gitpod
+
+
+# intalar
+pip install cassandra-driver pymongo psycopg2-binary python-dotenv
+
+
+
+# traer a local
+git checkout main
+git fetch origin main
+git merge origin/main
+
+# subir
+git add .
+git commit -m "cargue1"
+git push
