@@ -1,7 +1,7 @@
 # Instalacion 
 >docker-compose up -d
 
-
+prueba felipe 
 cargar archivos pesados
 > git lfs install               
 > git lfs track "*.gl.html"     
