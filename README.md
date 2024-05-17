@@ -1,5 +1,7 @@
+# Instalacion
 docker-compose up -d
 
+# Subir archivos pesados 
 git lfs install
 git lfs track "*.gl.html"
 git lfs push --all origin main
