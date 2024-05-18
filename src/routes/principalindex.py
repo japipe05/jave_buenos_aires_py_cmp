@@ -1,4 +1,4 @@
 from flask import render_template
 
-def principal():
+def principalindex():
     return render_template('index.html')

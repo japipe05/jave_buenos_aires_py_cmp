@@ -1,6 +1,8 @@
 from models.cliente_censo import crear_coleccion_si_no_existe,insertar_registros_desde_csv
-from routes import datos_censo,principal
+from routes import datos_censo,principalindex
 from flask import Flask
+
+from flask import render_template
 
 #llamamos nuestro app
 app = Flask(__name__)
@@ -12,7 +14,8 @@ def obtener_datos():
 
 @app.route('/', methods=['GET'])
 def principal():
-    return principal.principal()
+    #return render_template('index.html')
+    return principalindex.principalindex()
 
 # principal
 if __name__ == '__main__':
