@@ -1,34 +1,49 @@
-from cassandra.cluster import Cluster
+from flask import Flask, jsonify
+import pandas as pd
+from pymongo import MongoClient
+import os
+from dotenv import load_dotenv
+from flask import render_template
 
-# Configura el contacto inicial con un nodo de Cassandra
-cluster = Cluster(['cassandra1', 'cassandra2', 'cassandra3'])
+# Cargar variables de entorno desde el archivo .env
+load_dotenv()
 
-# Conecta con el cluster y abre una sesión
-session = cluster.connect()
 
-# Crea un keyspace y una tabla (solo si es necesario)
-session.execute("""
-    CREATE KEYSPACE IF NOT EXISTS test_keyspace
-    WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 3};
-""")
-session.set_keyspace('test_keyspace')
+app = Flask(__name__)
 
-session.execute("""
-    CREATE TABLE IF NOT EXISTS test_table (
-        id int PRIMARY KEY,
-        name text
-    );
-""")
+# Obtener variables de entorno
+mongo_usuario = os.getenv('MONGO_USUARIO')
+mongo_credencial = os.getenv('MONGO_CREDENCIAL')
+mongo_port = os.getenv('MONGO_PORT')
 
-# Inserta datos en la tabla
-session.execute("INSERT INTO test_table (id, name) VALUES (%s, %s)", (1, 'John'))
-session.execute("INSERT INTO test_table (id, name) VALUES (%s, %s)", (2, 'Alice'))
+print(mongo_usuario)
+print(mongo_credencial)
+print(mongo_port)
 
-# Consulta datos de la tabla
-rows = session.execute("SELECT * FROM test_table")
-for row in rows:
-    print(row.id, row.name)
+# Conexión a MongoDB
+mongo_client = MongoClient(f'mongodb://{mongo_usuario}:{mongo_credencial}@localhost:{mongo_port}/')
+db = mongo_client['db_javeriana']
+collection = db['cliente']
 
-# Cierra la sesión y el cluster al finalizar
-session.shutdown()
-cluster.shutdown()
+
+def crear_coleccion_si_no_existe():
+    if 'cliente' not in db.list_collection_names():
+        db.create_collection('cliente')
+
+
+def insertar_registros_desde_csv():
+    df = pd.read_csv('insumos/df_census.csv')
+    records = df.to_dict(orient='records')
+    collection.insert_many(records)
+
+
+@app.route('/datos', methods=['GET'])
+def obtener_datos():
+    datos = list(collection.find({}, {'_id': 0}))
+    return render_template('datos.html', datos=datos)
+
+
+if __name__ == '__main__':
+    crear_coleccion_si_no_existe()
+    insertar_registros_desde_csv()
+    app.run(debug=True)
