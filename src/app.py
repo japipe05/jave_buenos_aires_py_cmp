@@ -1,5 +1,5 @@
-from models.cliente_censo import crear_coleccion_si_no_existe,insertar_registros_desde_csv
-from routes import datos_censo,principalindex
+from models.poligonos_buenos_aires import crear_coleccion_si_no_existe,insertar_registros_desde_csv
+from routes import poligonos_buenos_aires,principalindex
 from flask import Flask
 
 from flask import render_template
@@ -8,9 +8,9 @@ from flask import render_template
 app = Flask(__name__)
 
 #routes
-@app.route('/datos_censo', methods=['GET'])
+@app.route('/poligonos_buenos_aires', methods=['GET'])
 def obtener_datos():
-    return datos_censo.obtener_datos()
+    return poligonos_buenos_aires.obtener_datos()
 
 @app.route('/', methods=['GET'])
 def principal():
