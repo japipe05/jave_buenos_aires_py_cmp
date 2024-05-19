@@ -6,7 +6,8 @@ def crear_coleccion_si_no_existe():
         db.create_collection('poligonos_buenos_aires')
 
 def insertar_registros_desde_csv():
-    with open('insumos/RMBA.geojson', 'r', encoding='utf-8') as file:
+    archivo='insumos/RMBA.geojson'
+    with open(archivo, 'r', encoding='utf-8') as file:
         data = json.load(file)
     collection.insert_many(data['features'])
 

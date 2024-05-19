@@ -1,4 +1,4 @@
-version: '3.8'
+version: '1.0'
 
 services:
   mongo:
@@ -23,6 +23,27 @@ services:
       POSTGRES_USER: ${POSTGRES_USUARIO}
       POSTGRES_PASSWORD: ${POSTGRES_CREDENCIAL}
       POSTGRES_DB: ${POSTGRES_DB}
+  
+  cassandra:
+    image: cassandra:${CASSANDRA_CONTAINER_TAG}
+    container_name: ${CASSANDRA_CONTAINER_NAME}
+    ports:
+      - "${CASSANDRA_PORT}:9042"
+    volumes:
+      - vol_cassandra_data:/var/lib/cassandra
+  app:
+    build: .
+    container_name: flask_app
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+    depends_on:
+      - mongo
+      - db
+      - cassandra
+      
 volumes:
   vol_mongo_data: 
   vol_postgres_data:
+  vol_cassandra_data:
