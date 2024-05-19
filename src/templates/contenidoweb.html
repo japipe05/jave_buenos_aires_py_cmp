@@ -1,0 +1,21 @@
+<!-- datos_origen.html -->
+{% extends "index.html" %}
+
+{% block title %}Datos del Censo{% endblock %}
+
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrar HTML</title>
+</head>
+<body>
+    <h1>Contenido del archivo HTML:</h1>
+    {{ contenido|safe }}
+</body>
+</html>
+{% endblock %}

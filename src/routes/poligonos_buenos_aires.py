@@ -10,3 +10,7 @@ def obtener_datos():
 def obtener_all():
     datos = list(collection.find({}, {'_id': 0}))
     return jsonify(datos)
+
+def obtener_limit2():
+    datos = list(collection.find({}, {'_id': 0}).limit(10))
+    return jsonify(datos)
