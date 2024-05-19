@@ -5,3 +5,5 @@ python-dotenv
 xlrd
 openpyxl
 keplergl
+sqlalchemy
+psycopg2
