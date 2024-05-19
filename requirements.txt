@@ -1,0 +1,7 @@
+pymongo
+pandas
+flask
+python-dotenv
+xlrd
+openpyxl
+keplergl

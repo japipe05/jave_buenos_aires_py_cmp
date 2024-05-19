@@ -217,9 +217,14 @@ pip install pymongo pandas flask python-dotenv xlrd openpyxl
 python upload_data.py
 python app.py
 
-docker-compose up -d
+docker-compose up -d --build
+
+usuario:felipe o 3224612380
+pass jave2024
 
 
+usuario: oscar o 3228344230
+pass jave2024
 
 
 # Subir archivos pesados 
