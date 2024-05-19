@@ -1,85 +1,28 @@
-version: '3.8' 
+version: '3.8'
 
-networks: 
+services:
+  mongo:
+    image: mongo:${MONGO_CONTAINER_TAG}
+    container_name: ${MONGO_CONTAINER_NAME}
+    ports:
+      - "${MONGO_PORT}:27017"
+    volumes:
+      - vol_mongo_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USUARIO}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_CREDENCIAL}
 
-  cassandra: 
-
-services: 
-
-  cassandra1: 
-
-    image: cassandra:latest 
-
-    container_name: cassandra1 
-
-    hostname: cassandra1 
-
-    networks: 
-
-      - cassandra 
-
-    ports: 
-
-      - "9042:9042" 
-
-    environment: &environment  
-
-        CASSANDRA_SEEDS: "cassandra1,cassandra2"   
-
-        CASSANDRA_CLUSTER_NAME: MyTestCluster 
-
-        CASSANDRA_DC: DC1 
-
-        CASSANDRA_RACK: RACK1 
-
-        CASSANDRA_ENDPOINT_SNITCH: GossipingPropertyFileSnitch 
-
-        CASSANDRA_NUM_TOKENS: 128 
-
-  cassandra2: 
-
-    image: cassandra:latest 
-
-    container_name: cassandra2 
-
-    hostname: cassandra2 
-
-    networks: 
-
-      - cassandra 
-
-    ports: 
-
-      - "9043:9042" 
-
-    environment: *environment   
-
-    depends_on: 
-
-      cassandra1:  
-
-        condition: service_started 
-
-  cassandra3: 
-
-    image: cassandra:latest 
-
-    container_name: cassandra3 
-
-    hostname: cassandra3 
-
-    networks: 
-
-      - cassandra 
-
-    ports: 
-
-      - "9044:9042" 
-
-    environment: *environment   
-
-    depends_on: 
-
-      cassandra2:   
-
-        condition: service_started
+  db:
+    image: postgres:${POSTGRES_CONTAINER_TAG}
+    container_name: ${POSTGRES_CONTAINER_NAME}
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - vol_postgres_data:/data/postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USUARIO}
+      POSTGRES_PASSWORD: ${POSTGRES_CREDENCIAL}
+      POSTGRES_DB: ${POSTGRES_DB}
+volumes:
+  vol_mongo_data: 
+  vol_postgres_data:

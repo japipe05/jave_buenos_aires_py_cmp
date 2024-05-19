@@ -1,9 +1,12 @@
 # Instalacion
-pip install cassandra-driver
-
-
+pip install pymongo pandas flask python-dotenv xlrd openpyxl
+python upload_data.py
+python app.py
 
 docker-compose up -d
+
+
+
 
 # Subir archivos pesados 
 git lfs install
