@@ -11,7 +11,7 @@ def principalindex():
         result = session.execute(query, [username])
         
         if result:
-            if verify_password(result, password):
+            if verify_password(result, password):    
                 return render_template('index.html')
         return "Invalid username or password"
     return "Invalid request"
