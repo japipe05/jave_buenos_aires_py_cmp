@@ -1,7 +1,10 @@
 from cassandra.cluster import Cluster
 from models.login import hash_password
-cluster = Cluster(['127.0.0.1'])
+#cluster = Cluster(['127.0.0.1'])
+#cluster = Cluster(['localhost']) local
+cluster = Cluster(['cassandra']) #docker
 session = cluster.connect()
+
 import os
 session.execute("CREATE KEYSPACE IF NOT EXISTS topicos WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1}")
 session.execute("USE topicos")
