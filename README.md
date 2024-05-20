@@ -3,7 +3,7 @@
 
 ## Introducción
 
-- **Descripción del Proyecto:** Breve descripción del proyecto y su propósito. ( ##### )
+- **Descripción del Proyecto:** Breve descripción del proyecto y su propósito. 
 
 El cliente, empresa dedicada a la comercialización de vestuario, busca comprender mejor a sus clientes B2B en la ciudad. Para ello, se propone un proyecto de análisis geoespacial que tiene como objetivos principales:
 
@@ -11,14 +11,14 @@ El cliente, empresa dedicada a la comercialización de vestuario, busca comprend
 
 ### Objetivo principal:
 
-Implementar arquitectura para la ejecución de un análisis geoespacial.
+Implementar arquitectura para la ejecución de un análisis geoespacial con poligonos de los datos obtenidos de los clientes y las ubicaciones en buenos aires.
 
 ### Objetivos secundarios: 
 
-- Identificar patrones espaciales en la distribución de clientes y ventas.  (##### donde estan los mejores)
+- Identificar patrones espaciales en la distribución de clientes y ventas.  donde estan los mejores para promocionar productos
 - Comprender la relación entre la ubicación de los clientes y sus características demográficas. (relacion vs ubicacion)
-- Segmentar el mercado en grupos de clientes con características y necesidades similares. ( ##### aunque esto es previo en el mapa se ve que se pueden segmetar mas)
-- Desarrollar estrategias de ventas y marketing más efectivas dirigidas a segmentos específicos del mercado. ( ##### diseño de recorridos de entrega pero esto se sale del alcance)
+- Segmentar el mercado en grupos de clientes con características y necesidades similares.  aunque esto es previo en el mapa se ve que se pueden segmetar mas
+- Desarrollar estrategias de ventas y marketing más efectivas dirigidas a segmentos específicos del mercado. diseño de recorridos de entrega pero esto se sale del alcance
 
 - **Contexto:** Antecedentes y contexto en los que se desarrolla el proyecto.
 
@@ -44,12 +44,12 @@ Se utilizarán los siguientes conjuntos de datos
     Justificación: Los clientes pueden tener más de una dirección. Si se desea mantener todas las direcciones, es recomendable usar MongoDB. Si se limita a la última dirección, se puede usar SQL.
 
 - Información geoespacial (polígonos) del Gran Buenos Aires:
-    - Base de datos a utilizar: MongoDB o PostGIS.
+    - Base de datos a utilizar: MongoDB.
     Justificación: El uso será limitado y no se necesitarán funciones avanzadas (intersección, unión y búfer). Inicialmente, se requiere calcular distancias desde el punto de la empresa hasta los clientes. Es necesario que la base de datos pueda escalar horizontalmente, ya que los polígonos pueden aumentar en el futuro. Además, su uso es más sencillo comparado con PostGIS, el cuál está diseñado para consultas más complejas como intersección, unión y búfer.
 
 - Información del censo.  
-    - Base de datos a utilizar: SQL.
-    Justificación: La información original no tiene un formato definido; sin embargo, todos los barrios tienen la misma información: nombre del barrio, número de hombres, número de mujeres y total por edades desde 0 a 110 años (años legales). Por lo tanto, se organiza en formato tabular por barrio y su contenido. Se podría usar MongoDB si se quisiera adicionar información única de cada barrio (número de parques, número de playas, etc.), pero como en este caso no es necesario, se elige usar SQL.
+    - Base de datos a utilizar: SQL Postgres.
+    Justificación: La información original no tiene un formato definido; sin embargo, todos los barrios tienen la misma información: nombre del barrio, número de hombres, número de mujeres y total por edades desde 0 a 110 años (años legales) y que no cuenta con una alta latencia en transacionalidades por segundo. Por lo tanto, se organiza en formato tabular por barrio y su contenido. Se podría usar MongoDB si se quisiera adicionar información única de cada barrio (número de parques, número de playas, etc.), pero como en este caso no es necesario, se elige usar SQL.
 
 - Información de la encuesta de bienestar. 
     - Base de datos a utilizar: SQL.
