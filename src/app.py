@@ -1,5 +1,3 @@
-from models.poligonos_buenos_aires import crear_coleccion_si_no_existe, insertar_registros_desde_csv
-from models.censo_clientes import cargar_csv_to_db
 from routes import poligonos_buenos_aires, principalindex, censo_cliente, mostrar_htmls, mostrar_archivo_html, login
 from flask import Flask,send_from_directory
 import os
@@ -38,7 +36,4 @@ def archivohtml(nombre_archivo):
 
 # principal
 if __name__ == '__main__':
-    crear_coleccion_si_no_existe()
-    insertar_registros_desde_csv()
-    cargar_csv_to_db()
     app.run(debug=True)
