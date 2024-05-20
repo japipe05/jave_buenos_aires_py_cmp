@@ -3,24 +3,30 @@
 
 ## Introducción
 
-- **Descripción del Proyecto:** Breve descripción del proyecto y su propósito. 
+- **Descripción del Proyecto:** 
+
+La empresa dedicada a la comercialización de vestuario (importante mencionar qué tipo de vestuario), busca a través de la tecnología necesaria, recopilar, almacenar y organizar información geográfica de sus clientes, para así lograr establecer sus nichos de mercado, mejorar sus estrategias de marketing y potenciar sus ventas en determinados lugares específicos en la ciudad de Buenos Aires (ARG). 
+Teniendo en cuenta las necesidades del cliente, proponemos el proyecto de análisis geoespacial; herramienta a través de la cual se pretende implementar una arquitectura web que permita recopilar información de los clientes directos e indirectos, con la recopilación de esta, se permitirá comprender las características sociodemográficas estableciendo de manera específica la relación entre necesidades vs ubicación. A su vez, esta herramienta busca establecer de manera georeferencial identificación de patrones especiales entre la distribución de los clientes y los puntos de mayores ventas o establecer puntos de clientes potenciales. Este proyecto, además, busca optimizar el almacenamiento de los datos significativos y que se consideren de relevancia para la compañía de acuerdo a sus necesidades para la creación de las estrategias de marketing y permitirá organizar información geográfica, focalizando puntos de ventas y brindando elementos para el análisis de posibles clientes.
 
 El cliente, empresa dedicada a la comercialización de vestuario, busca comprender mejor a sus clientes B2B en la ciudad. Para ello, se propone un proyecto de análisis geoespacial que tiene como objetivos principales:
+
+## Definiciones
+
+- **B2B:** son empresas o entidades que ofrecen productos, servicios o soluciones a otras empresas en lugar de vender directamente a consumidores finales.
 
 ## Objetivo:
 
 ### Objetivo principal:
 
-Implementar arquitectura para la ejecución de un análisis geoespacial con poligonos de los datos obtenidos de los clientes y las ubicaciones en buenos aires.
+Implementar arquitectura web para la ejecución de un análisis geoespacial estableciendo polígonos de datos que permitan a la compañía mejorar sus estrategias de marketing y potenciar sus ventas en determinados lugares específicos en la ciudad de Buenos Aires (ARG).
 
 ### Objetivos secundarios: 
 
-- Identificar patrones espaciales en la distribución de clientes y ventas.  donde estan los mejores para promocionar productos
-- Comprender la relación entre la ubicación de los clientes y sus características demográficas. (relacion vs ubicacion)
-- Segmentar el mercado en grupos de clientes con características y necesidades similares.  aunque esto es previo en el mapa se ve que se pueden segmetar mas
-- Desarrollar estrategias de ventas y marketing más efectivas dirigidas a segmentos específicos del mercado. diseño de recorridos de entrega pero esto se sale del alcance
+- Recopilar información a través de una base de datospara promocionar productos
+- Ofrecer eficiencia a la exploración, Preparacion y visualizacin de los datos.
+- Organizar información geográfica de los clientes potenciales a través de elementos de georreferenciación 
 
-- **Contexto:** Antecedentes y contexto en los que se desarrolla el proyecto.
+- **Contexto:**
 
 El proyecto se centrará en mapear la ubicación precisa de los clientes, creando una representación visual detallada de su distribución espacial. Esta información nos permitirá identificar concentraciones de clientes, zonas de potencial crecimiento y áreas que podrían estar subatendidas.
 
@@ -39,17 +45,23 @@ Tipo de proyecto: Incremental.
 
 Se utilizarán los siguientes conjuntos de datos
 
-- Información encriptada del cliente (Edad, Género, posición geográfica (longitud y latitud), grupo asignado)
-    - Base de datos a utilizar: MongoDB o SQL.
-    Justificación: Los clientes pueden tener más de una dirección. Si se desea mantener todas las direcciones, es recomendable usar MongoDB. Si se limita a la última dirección, se puede usar SQL.
-
 - Información geoespacial (polígonos) del Gran Buenos Aires:
     - Base de datos a utilizar: MongoDB.
-    Justificación: El uso será limitado y no se necesitarán funciones avanzadas (intersección, unión y búfer). Inicialmente, se requiere calcular distancias desde el punto de la empresa hasta los clientes. Es necesario que la base de datos pueda escalar horizontalmente, ya que los polígonos pueden aumentar en el futuro. Además, su uso es más sencillo comparado con PostGIS, el cuál está diseñado para consultas más complejas como intersección, unión y búfer.
+    Justificación: El uso será limitado y no se necesitarán funciones avanzadas (intersección, unión y búfer). Inicialmente, se requiere calcular distancias desde el punto de la empresa hasta los clientes. Es necesario que la base de datos pueda escalar horizontalmente, ya que los polígonos pueden aumentar en el futuro. Además, su uso es más sencillo comparado con PostGIS, el cuál está diseñado para consultas más complejas como intersección, unión y búfer. Ademas, Información encriptada del cliente (Edad, Género, posición geográfica (longitud y latitud), grupo asignado)
+    1. Mongo es una base de datos especializadas en geospacial para el almacenamiento
+    2. Mongo es la ideal para subir archivos JSON dado a la data 
+    3. No se usan bases de datos relacionales debido a que la complegidad de usar datos como **longitud y latitud** 
+
+Base de datos **db_javeraian**, Colleccion **poligonos_buenos_aires**
+a continuacion los datos del **JSON**
+![tipos_datos_mongo.png](doc/img/tipos_datos_mongo.png)
 
 - Información del censo.  
     - Base de datos a utilizar: SQL Postgres.
     Justificación: La información original no tiene un formato definido; sin embargo, todos los barrios tienen la misma información: nombre del barrio, número de hombres, número de mujeres y total por edades desde 0 a 110 años (años legales) y que no cuenta con una alta latencia en transacionalidades por segundo. Por lo tanto, se organiza en formato tabular por barrio y su contenido. Se podría usar MongoDB si se quisiera adicionar información única de cada barrio (número de parques, número de playas, etc.), pero como en este caso no es necesario, se elige usar SQL.
+datos se almacenan en la base de datos **jave_database** tabla **census_data** a continuacion los siguientes **columnas**:
+
+![tipos_datos_postgres.png](doc/img/tipos_datos_postgres.png)
 
 - Información de la encuesta de bienestar. 
     - Base de datos a utilizar: SQL.
@@ -59,20 +71,37 @@ Se utilizarán los siguientes conjuntos de datos
 
 ![alt text](doc/img/tabla_sql_mongo.PNG)
 
-- **Alcance:**   ( ##### no estoy seguro que se pone aca)
+- **Alcance:**  
 
+Se implementara la siguiente arquitectura para la solucion de los objetivos planteados y resolver las necesidades de la empresa dedicada a la comercialización de vestuario
 
+    1. Se realiza lo siguiente
+        a. **Login**: Se realiza en el front-end en **HTML5** que es una aplicativos **Web** que interactua con el usuario para ingresar al sistema con credenciales usuario o telefono y su contraseña además interactuar en el Back-end con **Python** para las conexiones de validacion del usario hacia la base de datos **Cassandra** dado a sus nodos podemos consultar por usurio o telefono mejorando la velocidad de respuesta y versatilidad y eficiencia 
 
+        b. **Data Censo: ** Se realiza en el front-end en **HTML5** un aplicativo **Web** que interactua con el usuario para visualizar los insumos de data .csv a consumir por el sistema que interactua con **Python** para realizar los inserts a las bases de datos **Postgres** en sql relacionales
 
+        c. **Data Buenos Aires:** Se realiza en el front-end en **HTML5** un aplicativo **Web** que interactura con el usuario para visualizar los insumos .geojson que interactua con **Python** para realizar los inserts en las base de datos de **MongoDb**
+        
+        d.**Mapas Analítica:** Se utiliza un front-end **Kepler.gl** y **HTML5** para la visualización de los mapas que interactuan con el usuarion para ver la exploracion y preparacion que realizo el aplicativo para encontrar los analisis con la finalidad de evidenciar estadisticamente datos significaativos de donde mas popular se comercializa vestidos 
 
-### Preguntas de negocio (#### propio no se si se deba tener o mover)
+        e.**Jupiter:** Se utiliza en la parte de backend para la exploración y preparación de los datos con la finalidad de que sevisualicen los datos de buenos aires y los clientes
+
+        f.**Repositorio:** Se utiliza un controlador de repositorios **Git-Hub** para el control de versiones
+        
+        g.**Data proveedores:** Se utiliza la data de los provedores como insumos para iniciar con los analisis, exploración y preparación de los datos **.csv** y **.geojson** y es open source y para que no se compromentan nombres se limpian desde el inicio
+
+        h.**Docker:** Se utiliza las contenedores con patron per servises para contenerizar las bases de datos y el aplicativo
+
+![arquitectura.png](doc/img/arquitectura.png)
+
+### Preguntas de negocio 
 
 - Donde se encuentran los mejores clientes
 - Los mejores o los peores se encuentran mas cerca o mas lejos
 - Los mejores estan asociados a ingresos?
 
 
-### Resultados esperados (#### propio no se si se deba tener o mover)
+### Resultados esperados 
 
 El proyecto se espera que resulte en los siguientes resultados:
 
@@ -81,27 +110,23 @@ El proyecto se espera que resulte en los siguientes resultados:
 - Segmentos de mercado bien definidos con características y necesidades similares.
 - Estrategias de ventas y marketing más efectivas dirigidas a segmentos específicos del mercado.
 
+## Atributos de Calidad 
 
-
-
-
-## Atributos de Calidad (##### ni idea)
-
-- **Escalabilidad:** Cómo la arquitectura puede manejar un aumento en la carga de trabajo. 
-- **Rendimiento:** Expectativas de rendimiento y cómo se medirá.
-- **Disponibilidad:** Nivel de disponibilidad requerido y cómo se logrará.
-- **Seguridad:** Medidas de seguridad implementadas para proteger los datos.
-- **Mantenibilidad:** Cómo se asegurará que la arquitectura sea fácil de mantener y actualizar.
+- **Escalabilidad:** Estos contenedores son aislados y consistentes, lo que significa que la aplicación se ejecutará de la misma manera en cualquier entorno que soporte Docker.
+- **Rendimiento:** ya depende los recursos del servidor o la nuve que utilice en ram y almacenamiento
+- **Disponibilidad:** No maneja
+- **Seguridad:** Maneja temas de encriptación en password en base de datos utilizando hash
+- **Mantenibilidad:** Utiliza un patron MVC modelo vista controlador para la mantebilidad
 - **Confiabilidad:** Nivel de confiabilidad y cómo se garantizará.
 
-## Descripción de la Arquitectura (##### ni idea)
-- **Diagramas de Arquitectura:** Diagramas que ilustren la arquitectura del sistema.
+## Descripción de la Arquitectura 
+- **Diagramas de Arquitectura:** Se encuentra con 
 - **Componentes:** Descripción de los principales componentes del sistema y sus responsabilidades.
 - **Flujo de Datos:** Cómo se mueven los datos a través del sistema. (##### falta definirlo)
 
 ### Arquitectura (##### ni idea)
 - Componentes
-![architecture.png](doc/img/architecture.png)
+![arquitectura_componetes.png](doc/img/arquitectura_componetes.png)
 
 ## Tecnologías Utilizadas
 - **Lenguajes de Programación:** Se utilizara Python
