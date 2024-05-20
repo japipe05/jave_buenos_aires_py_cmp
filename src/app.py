@@ -1,10 +1,14 @@
 from models.poligonos_buenos_aires import crear_coleccion_si_no_existe, insertar_registros_desde_csv
 from models.censo_clientes import cargar_csv_to_db
 from routes import poligonos_buenos_aires, principalindex, censo_cliente, mostrar_htmls, mostrar_archivo_html, login
-from flask import Flask
-
+from flask import Flask,send_from_directory
+import os
 # llamamos nuestro app
 app = Flask(__name__)
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='static/favicon.ico')
 
 # routes
 @app.route('/')
