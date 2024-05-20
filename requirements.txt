@@ -6,4 +6,5 @@ xlrd
 openpyxl
 keplergl
 sqlalchemy
-psycopg2
+psycopg2-binary
+cassandra-driver
