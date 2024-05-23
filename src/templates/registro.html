@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+   <html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <!--=============== REMIXICONS ===============-->
+      <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+      <!--=============== CSS ===============-->
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+
+      <title>Registro Javeriana</title>
+   </head>
+   <body>
+      <div class="login">
+        <img src="{{ url_for('static', filename='img/login-bg.png') }}" alt="login image" class="login__img">
+
+         <form class="login__form" action="/login" method="post">
+            <h1 class="login__title">Registro</h1>
+
+            <div class="login__content">
+               <div class="login__box">
+                  <i class="ri-user-3-line login__icon"></i>
+
+                  <div class="login__box-input">
+                     <input type="text" required name="username" class="login__input" id="username" placeholder=" ">
+                     <label for="username" class="login__label">Usuario</label>
+                  </div>
+               </div>
+
+               <div class="login__box">
+                  <i class="ri-user-3-line login__icon"></i>
+
+                  <div class="login__box-input">
+                     <input type="text" required name="telefono" class="login__input" id="telefono" placeholder=" ">
+                     <label for="telefono" class="login__label"> Teléfono</label>
+                  </div>
+               </div>
+
+               <div class="login__box">
+                  <i class="ri-lock-2-line login__icon"></i>
+
+                  <div class="login__box-input">
+                     <input type="password" required class="login__input" id="login-pass" placeholder=" " name="password">
+                     <label for="login-pass" class="login__label">Contraseña</label>
+                     <i class="ri-eye-off-line login__eye" id="login-eye"></i>
+                  </div>
+               </div>
+
+            </div>
+
+            <button type="submit" class="login__button">Registrar</button>
+
+            <p class="login__register">
+               <a href="/">Tengo cuenta</a>
+            </p>
+         </form>
+      </div>
+      
+      <!--=============== MAIN JS ===============-->
+      <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+   </body>
+</html>

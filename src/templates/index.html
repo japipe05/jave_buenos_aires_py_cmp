@@ -1,49 +1,65 @@
-<!-- base.html -->
 <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}Página de Inicio{% endblock %}</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Mi Sitio</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="censo_cliente">Datos Censo</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="poligonos_buenos_aires">Datos Polígonos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Data Resultante</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="listadosweb">dashboard resultantes</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/">logout</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <div class="container">
-    {% block content %}
-    {% endblock %}
-  </div>
+        <!--=============== BOXICONS ===============-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+        <!--=============== CSS ===============-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styleshome.css') }}">
+        <title>{% block title %}Página Home{% endblock %}</title>
+    </head>
+    <body>
+        <!--=============== HEADER ===============-->
+        <header class="header" id="header">
+            <nav class="nav container">
+                <a href="#" class="nav__logo">Universidad Javeriana</a>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="#home" class="nav__link active-link">
+                                <i class='bx bx-home-alt nav__icon'></i>
+                                <span class="nav__name">Home</span>
+                            </a>
+                        </li>
+                        
+                        <li class="nav__item">
+                            <a href="censo_cliente" class="nav__link">
+                                <i class='bx bx-user nav__icon'></i>
+                                <span class="nav__name">Datos Censo</span>
+                            </a>
+                        </li>
+
+                        <li class="nav__item">
+                            <a href="poligonos_buenos_aires" class="nav__link">
+                                <i class='bx bx-book-alt nav__icon'></i>
+                                <span class="nav__name">Datos Polígonos</span>
+                            </a>
+                        </li>
+
+                        <li class="nav__item">
+                            <a href="listadosweb" class="nav__link">
+                                <i class='bx bx-briefcase-alt nav__icon'></i>
+                                <span class="nav__name">Dashboard resultantes</span>
+                            </a>
+                        </li>
+
+                        <li class="nav__item">
+                            <a  href="/" class="nav__link">
+                                <i class='bx bx-message-square-detail nav__icon'></i>
+                                <span class="nav__name">Cerrar Sesión</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <img src="{{ url_for('static', filename='img/perfil.png') }}"  alt="" class="nav__img">
+            </nav>
+        </header>
+        <!--=============== MAIN JS ===============-->
+        <script src="{{ url_for('static', filename='js/mainhome.js') }}"></script>
+    </body>
 </html>

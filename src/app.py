@@ -1,4 +1,4 @@
-from routes import poligonos_buenos_aires, principalindex, censo_cliente, mostrar_htmls, mostrar_archivo_html, login
+from routes import poligonos_buenos_aires, principalindex, censo_cliente, mostrar_htmls, mostrar_archivo_html, login, registro, registrando
 from flask import Flask,send_from_directory
 import os
 # llamamos nuestro app
@@ -12,6 +12,14 @@ def favicon():
 @app.route('/')
 def log():
     return login.login()
+
+@app.route('/registro', methods=['GET','POST'])
+def reg():
+    return registro.registro()
+
+@app.route('/login', methods=['GET','POST'])
+def log2():
+    return registrando.principalregistro()
 
 @app.route('/home', methods=['POST'])
 def principal():

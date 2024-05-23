@@ -23,6 +23,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_CREDENCIAL}
     networks:
       - app_shared_network
+      
   db:
     image: postgres:${POSTGRES_CONTAINER_TAG}
     container_name: ${POSTGRES_CONTAINER_NAME}
@@ -49,7 +50,7 @@ services:
       - mongo
       - db
       - cassandra
-    entrypoint: ["sh", "-c", "sleep 180 && flask run --host=0.0.0.0"]
+    #entrypoint: ["sh", "-c", "sleep 180 && flask run --host=0.0.0.0"]
     networks:
       - app_shared_network
 
