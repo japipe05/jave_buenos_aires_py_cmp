@@ -12,3 +12,6 @@ postgres_user = os.getenv('POSTGRES_USUARIO')
 postgres_password = os.getenv('POSTGRES_CREDENCIAL')
 postgres_db = os.getenv('POSTGRES_DB')
 postgres_port = os.getenv('POSTGRES_PORT')
+
+#Ambiente
+app_entorno = os.getenv('APP_ENTORNO')
