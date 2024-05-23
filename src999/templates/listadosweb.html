@@ -1,0 +1,42 @@
+<!-- datos_origen.html -->
+{% extends "index.html" %}
+
+{% block title %}Datos del Censo{% endblock %}
+
+
+{% block content %}
+<!DOCTYPE html>
+   <html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!--=============== REMIXICONS ===============-->
+      <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+      <!--=============== CSS ===============-->
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+      <title>Home</title>
+   </head>
+   <body>
+      <div class="login">
+        <img src="{{ url_for('static', filename='img/login-bg.png') }}" alt="login image" class="login__img">
+
+         <form class="login__form" action="/home" method="post">
+        
+            <h1 class="login__title">Repositorio de HTML Generados</h1>
+
+            <ul>
+                {% for archivo in archivos_html %}
+        
+                    <li class="login__button"><a href="/{{ archivo }}" target="_blank" onclick="changeColor(this)">{{ archivo }}</a></li>
+                {% endfor %}
+            </ul>
+         </form>
+      </div>
+      
+      <!--=============== MAIN JS ===============-->
+      <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+   </body>
+</html>
+{% endblock %}
+
+

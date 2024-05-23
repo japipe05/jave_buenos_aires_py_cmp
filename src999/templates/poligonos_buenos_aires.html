@@ -1,0 +1,42 @@
+<!-- datos_origen.html -->
+{% extends "index.html" %}
+
+{% block title %}Datos del Censo{% endblock %}
+
+{% block content %}
+<!-- Contenido específico de la página de datos del censo -->
+<div class="container" style="margin-top: 10%; margin-left: 10%;">
+    <h2>Datos de los poligonos de Buenos Aires Mongo DB</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>DEPTO</th>
+                <th>HOGARES</th>
+                <th>PERSONAS</th>
+                <th>PROVINCIA</th>
+                <th>RADIO</th>
+                <th>VIVIENDAS</th>
+                <th>VIV_HABIT</th>
+                <th>CORONA</th>
+                <th>coordinates</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dato in datos %}
+            <tr>
+                <td>{{ dato['properties']['DEPTO'] }}</td>
+                <td>{{ dato['properties']['HOGARES'] }}</td>
+                <td>{{ dato['properties']['PERSONAS'] }}</td>
+                <td>{{ dato['properties']['PROVINCIA'] }}</td>
+                <td>{{ dato['properties']['RADIO'] }}</td>
+                <td>{{ dato['properties']['VIVIENDAS'] }}</td>
+                <td>{{ dato['properties']['VIV_HABIT'] }}</td>
+                <td>{{ dato['properties']['CORONA'] }}</td>
+                <td>{{ dato['geometry']['coordinates'][0][0][0]}} ...</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

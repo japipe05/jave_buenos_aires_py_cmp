@@ -1,0 +1,45 @@
+<!-- censo.html -->
+{% extends "index.html" %}
+
+{% block title %}Datos del Censo{% endblock %}
+{% block content %}
+
+
+<div class="container" style="margin-top: 10%; margin-left: 10%;">
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="container">
+        <h2 class="text-center mb-4">Datos del Censo de los clientes en Postgres</h2>
+        
+        <div class="table-responsive">
+            
+            <table id="example" class="table table-striped" style="width:100%">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Code</th>
+                        <th>Barrio Name</th>
+                        <th>Edad</th>
+                        <th>Hombres</th>
+                        <th>Mujeres</th>
+                        <th>Total</th>
+                        <th>G_Edad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for fila in tabla %}
+                    <tr>
+                        <td>{{ fila.code }}</td>
+                        <td>{{ fila.barrio_name }}</td>
+                        <td>{{ fila.edad }}</td>
+                        <td>{{ fila.hombres }}</td>
+                        <td>{{ fila.mujeres }}</td>
+                        <td>{{ fila.total }}</td>
+                        <td>{{ fila.g_edad }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
