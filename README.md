@@ -5,7 +5,7 @@
 
 - **Descripción del Proyecto:** 
 
-La empresa dedicada a la comercialización de vestuario (importante mencionar qué tipo de vestuario), busca a través de la tecnología necesaria, recopilar, almacenar y organizar información geográfica de sus clientes, para así lograr establecer sus nichos de mercado, mejorar sus estrategias de marketing y potenciar sus ventas en determinados lugares específicos en la ciudad de Buenos Aires (ARG). 
+La empresa dedicada a la comercialización de vestuario (importante mencionar qué tipo de vestuario ya que solo sera este topico analizado), busca a través de la tecnología necesaria, recopilar, almacenar y organizar información geográfica de sus clientes, para así lograr establecer sus nichos de mercado, mejorar sus estrategias de marketing y potenciar sus ventas en determinados lugares específicos en la ciudad de Buenos Aires (ARG). 
 Teniendo en cuenta las necesidades del cliente, proponemos el proyecto de análisis geoespacial; herramienta a través de la cual se pretende implementar una arquitectura web que permita recopilar información de los clientes directos e indirectos, con la recopilación de esta, se permitirá comprender las características sociodemográficas estableciendo de manera específica la relación entre necesidades vs ubicación. A su vez, esta herramienta busca establecer de manera georeferencial identificación de patrones especiales entre la distribución de los clientes y los puntos de mayores ventas o establecer puntos de clientes potenciales. Este proyecto, además, busca optimizar el almacenamiento de los datos significativos y que se consideren de relevancia para la compañía de acuerdo a sus necesidades para la creación de las estrategias de marketing y permitirá organizar información geográfica, focalizando puntos de ventas y brindando elementos para el análisis de posibles clientes.
 
 El cliente, empresa dedicada a la comercialización de vestuario, busca comprender mejor a sus clientes B2B en la ciudad. Para ello, se propone un proyecto de análisis geoespacial que tiene como objetivos principales:
@@ -99,6 +99,7 @@ Se implementara la siguiente arquitectura para la solucion de los objetivos plan
 - Donde se encuentran los mejores clientes
 - Los mejores o los peores se encuentran mas cerca o mas lejos
 - Los mejores estan asociados a ingresos?
+- Los mejores clientes se encuentran cerca a una playa?
 
 
 ### Resultados esperados 
@@ -122,19 +123,19 @@ El proyecto se espera que resulte en los siguientes resultados:
 ## Descripción de la Arquitectura 
 - **Diagramas de Arquitectura:** Se encuentra con 
 - **Componentes:** Descripción de los principales componentes del sistema y sus responsabilidades.
-- **Flujo de Datos:** Cómo se mueven los datos a través del sistema. (##### falta definirlo)
+- **Flujo de Datos:** Cómo se mueven los datos a través del sistema.
 
-### Arquitectura (##### ni idea)
+### Arquitectura
 - Componentes
 ![arquitectura_componetes.png](doc/img/arquitectura_componetes.png)
 
 ## Tecnologías Utilizadas
 - **Lenguajes de Programación:** Se utilizara Python
 - **Frameworks y Librerías:** keplergl, dash
-- **Plataformas y Servicios:** (##### ni idea)
+- **Plataformas y Servicios:** 
 
 ## Configuración e Instalación
-- **Requisitos Previos:** Python 3.10 (##### revisar el docker compose)
+- **Requisitos Previos:** Python 3.10 
 - **Instrucciones de Instalación:** Pasos detallados para instalar y configurar el proyecto.
 - **Configuración Inicial:** Configuraciones iniciales que deben ser realizadas antes de ejecutar el proyecto.
 
@@ -203,31 +204,29 @@ Al iniciar un mapa, en este ejemplo, los barrios y comunas del Gran Buenos aires
 1. Mapa
 2. Datos y capas cargados actualmente, los cuales se pueden modificar
 
-(##### agregar videos)
-
 En laviñeta de filtros se pueden aplicar filtros a necesidad, se mostrará una vista similar a la que se muestra en la siguiente imagen.(#### modificar imagen)
 
 ![alt text](doc/img/guia4.PNG) 
 
-## Pruebas y Validación (##### ni idea)
+## Pruebas y Validación 
 Estrategia de Pruebas: Cómo se realizarán las pruebas para asegurar la calidad.
 Casos de Prueba: Ejemplos de casos de prueba que se utilizarán.
 Resultados Esperados: Resultados esperados de las pruebas.
  
-## Pruebas y Validación (##### ni idea)
+## Pruebas y Validación 
 Estrategia de Pruebas: Cómo se realizarán las pruebas para asegurar la calidad.
 Casos de Prueba: Ejemplos de casos de prueba que se utilizarán.
 Resultados Esperados: Resultados esperados de las pruebas.
 
-## Mantenimiento y Soporte (##### ni idea)
+## Mantenimiento y Soporte 
 Guía de Mantenimiento: Procedimientos y mejores prácticas para mantener el sistema.
 Soporte: Cómo obtener ayuda y soporte para el proyecto.
 
-## Contribuciones (##### ni idea)
+## Contribuciones 
 Guía de Contribución: Cómo otros pueden contribuir al proyecto.
 Políticas de Código: Normas y políticas para contribuir con código al proyecto.
 
-## Licencia (##### ni idea)
+## Licencia
 Licencia del Proyecto: Detalles sobre la licencia bajo la cual se distribuye el proyecto.
 
 
