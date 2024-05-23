@@ -1,8 +1,13 @@
 from cassandra.cluster import Cluster
 from models.login import hash_password
-#cluster = Cluster(['127.0.0.1'])
-#cluster = Cluster(['localhost']) local
-cluster = Cluster(['cassandra']) #docker
+from config.envs import  app_entorno
+
+if app_entorno == 'DESARROLLO':
+   #cluster = Cluster(['127.0.0.1'])
+   cluster = Cluster(['localhost'])  
+else:
+    cluster = Cluster(['cassandra']) #docker
+
 session = cluster.connect()
 
 import os

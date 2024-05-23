@@ -39,7 +39,7 @@ services:
 
   app:
     build: .
-    container_name: flask_app
+    container_name: app_jave_buenos_aires
     ports:
       - "5000:5000"
     environment:
@@ -49,7 +49,7 @@ services:
       - mongo
       - db
       - cassandra
-    entrypoint: ["sh", "-c", "sleep 10 && flask run --host=0.0.0.0"]
+    entrypoint: ["sh", "-c", "sleep 180 && flask run --host=0.0.0.0"]
     networks:
       - app_shared_network
 
