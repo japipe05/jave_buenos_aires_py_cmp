@@ -11,7 +11,7 @@ def principalindex():
         result = session.execute(query, [username])
         
         if result and verify_password(result, password):
-            return render_template('index.html')
+            return render_template('home.html')
         else:
             error = "Invalidad credenciales"
             return render_template('error.html', error=error)
