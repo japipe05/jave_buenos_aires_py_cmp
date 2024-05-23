@@ -19,13 +19,14 @@
 
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
+                        
                         <li class="nav__item">
-                            <a href="#home" class="nav__link active-link">
-                                <i class='bx bx-home-alt nav__icon'></i>
+                            <a href="#Home" class="nav__link">
+                                <i class='bx bx-user nav__icon'></i>
                                 <span class="nav__name">Home</span>
                             </a>
                         </li>
-                        
+
                         <li class="nav__item">
                             <a href="censo_cliente" class="nav__link">
                                 <i class='bx bx-user nav__icon'></i>
@@ -59,6 +60,11 @@
                 <img src="{{ url_for('static', filename='img/perfil.png') }}"  alt="" class="nav__img">
             </nav>
         </header>
+        
+  <div class="container">
+    {% block content %}
+    {% endblock %}
+  </div>
         <!--=============== MAIN JS ===============-->
         <script src="{{ url_for('static', filename='js/mainhome.js') }}"></script>
     </body>

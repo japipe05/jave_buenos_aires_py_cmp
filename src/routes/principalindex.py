@@ -14,6 +14,6 @@ def principalindex():
             return render_template('index.html')
         else:
             error = "Invalidad credenciales"
-            return render_template('login.html', error=error)
+            return render_template('error.html', error=error)
     error = "Invalid request"
-    return render_template('login.html', error=error)
+    return render_template('error.html', error=error)

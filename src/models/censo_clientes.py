@@ -8,7 +8,7 @@ def cargar_csv_to_db():
 
 # Consultar los datos de la base de datos
 def consultar_datos():
-    query = "SELECT * FROM census_data limit 10"
+    query = "SELECT * FROM census_data limit 20"
     df = pd.read_sql(query, engine)
     datos = df.to_dict(orient='records')
     return datos
