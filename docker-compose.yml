@@ -50,7 +50,7 @@ services:
       - mongo
       - db
       - cassandra
-    entrypoint: ["sh", "-c", "sleep 240 && flask run --host=0.0.0.0"]
+    entrypoint: ["sh", "-c", "sleep 400 && flask run --host=0.0.0.0"]
     networks:
       - app_shared_network
 
