@@ -124,19 +124,17 @@ El proyecto se espera que resulte en los siguientes resultados:
 - **Componentes:** Descripción de los principales componentes del sistema y sus responsabilidades.
 - **Flujo de Datos:** Cómo se mueven los datos a través del sistema. (##### falta definirlo)
 
-### Arquitectura (##### ni idea)
+### Arquitectura 
 - Componentes
 ![arquitectura_componetes.png](doc/img/arquitectura_componetes.png)
 
 ## Tecnologías Utilizadas
-- **Lenguajes de Programación:** Se utilizara Python
-- **Frameworks y Librerías:** keplergl, dash
-- **Plataformas y Servicios:** (##### ni idea)
+- **Lenguajes de Programación:** Se utilizara Python, HTML5, JavaScript
+- **Frameworks y Librerías:** keplergl, dash, Flask
+- **Plataformas y Servicios:** Github, netlify, Docker
 
 ## Configuración e Instalación
-- **Requisitos Previos:** Python 3.10 (##### revisar el docker compose)
-- **Instrucciones de Instalación:** Pasos detallados para instalar y configurar el proyecto.
-- **Configuración Inicial:** Configuraciones iniciales que deben ser realizadas antes de ejecutar el proyecto.
+- **Requisitos Previos:** Tener Docker instalado
 
 ### <a id='1'>Local usage of App </a>
 
