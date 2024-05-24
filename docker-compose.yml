@@ -1,0 +1,63 @@
+version: '1.0'
+
+services:
+  cassandra:
+    image: cassandra:${CASSANDRA_CONTAINER_TAG}
+    container_name: ${CASSANDRA_CONTAINER_NAME}
+    ports:
+      - "${CASSANDRA_PORT}:9042"
+    volumes:
+      - vol_cassandra_data:/var/lib/cassandra
+    networks:
+      - app_shared_network
+
+  mongo:
+    image: mongo:${MONGO_CONTAINER_TAG}
+    container_name: ${MONGO_CONTAINER_NAME}
+    ports:
+      - "${MONGO_PORT}:27017"
+    volumes:
+      - vol_mongo_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USUARIO}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_CREDENCIAL}
+    networks:
+      - app_shared_network
+      
+  db:
+    image: postgres:${POSTGRES_CONTAINER_TAG}
+    container_name: ${POSTGRES_CONTAINER_NAME}
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - vol_postgres_data:/data/postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USUARIO}
+      POSTGRES_PASSWORD: ${POSTGRES_CREDENCIAL}
+      POSTGRES_DB: ${POSTGRES_DB}
+    networks:
+      - app_shared_network
+
+  app:
+    build: .
+    container_name: app_jave_buenos_aires
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=src/app.py
+    depends_on:
+      - mongo
+      - db
+      - cassandra
+    entrypoint: ["sh", "-c", "sleep 240 && flask run --host=0.0.0.0"]
+    networks:
+      - app_shared_network
+
+volumes:
+  vol_mongo_data: 
+  vol_postgres_data:
+  vol_cassandra_data:
+
+networks:
+  app_shared_network:

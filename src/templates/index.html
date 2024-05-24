@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--=============== BOXICONS ===============-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+        <!--=============== CSS ===============-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styleshome.css') }}">
+        <title>{% block title %}Página Home{% endblock %}</title>
+    </head>
+    <body>
+        <!--=============== HEADER ===============-->
+        <header class="header" id="header">
+            <nav class="nav container">
+                <a href="home" class="nav__logo">Universidad Javeriana</a>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        
+                        <li class="nav__item">
+                            <a href="home" class="nav__link">
+                                <i class='bx bx-user nav__icon'></i>
+                                <span class="nav__name">Home</span>
+                            </a>
+                        </li>
+
+                        <li class="nav__item">
+                            <a href="censo_cliente" class="nav__link">
+                                <i class='bx bx-user nav__icon'></i>
+                                <span class="nav__name">Datos Censo</span>
+                            </a>
+                        </li>
+
+                        <li class="nav__item">
+                            <a href="poligonos_buenos_aires" class="nav__link">
+                                <i class='bx bx-book-alt nav__icon'></i>
+                                <span class="nav__name">Datos Polígonos</span>
+                            </a>
+                        </li>
+
+                        <li class="nav__item">
+                            <a href="listadosweb" class="nav__link">
+                                <i class='bx bx-briefcase-alt nav__icon'></i>
+                                <span class="nav__name">Dashboard resultantes</span>
+                            </a>
+                        </li>
+
+                        <li class="nav__item">
+                            <a  href="/" class="nav__link">
+                                <i class='bx bx-message-square-detail nav__icon'></i>
+                                <span class="nav__name">Cerrar Sesión</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <img src="{{ url_for('static', filename='img/perfil.png') }}"  alt="" class="nav__img">
+            </nav>
+        </header>
+        
+  <div class="container">
+    {% block content %}
+    {% endblock %}
+  </div>
+        <!--=============== MAIN JS ===============-->
+        <script src="{{ url_for('static', filename='js/mainhome.js') }}"></script>
+    </body>
+</html>

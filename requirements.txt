@@ -1,0 +1,10 @@
+pymongo
+pandas
+flask
+python-dotenv
+xlrd
+openpyxl
+keplergl
+sqlalchemy
+psycopg2-binary
+cassandra-driver
