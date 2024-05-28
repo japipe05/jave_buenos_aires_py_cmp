@@ -38,7 +38,7 @@ Members:
     - <a href='#11.3'>11.3 Desplegar usando GitPod </a>
 - <a href='#12'>12. Uso del Proyecto</a>
     - <a href='#12.1'>12.1 Guía de Usuario</a>
-    - <a href='#12.2'>12.2 Guía de Usuario</a>
+    - <a href='#12.2'>12.2 Ejemplos de Uso</a>
 
 
 
