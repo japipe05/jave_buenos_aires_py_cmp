@@ -393,7 +393,7 @@ Al iniciar un mapa, en este ejemplo, los barrios y comunas del Gran Buenos aires
 1. Mapa
 2. Datos y capas cargados actualmente, los cuales se pueden modificar
 
-En laviñeta de filtros se pueden aplicar filtros a necesidad, se mostrará una vista similar a la que se muestra en la siguiente imagen.(#### modificar imagen)
+En la sección de filtros, puede aplicar los filtros según sus necesidades, y se mostrará una vista similar a la que se ilustra en la siguiente imagen.
 
 ![alt text](doc/img/guia4.PNG) 
 
