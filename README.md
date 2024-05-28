@@ -1,7 +1,48 @@
 
-# **Título**: Análisis geoespacial de clientes para optimizar estrategias de ventas y marketing
+# GeoMarketing: Optimiza tus ventas y marketing con datos geográficos.
 
-## Introducción
+![alt text](doc/img/logo.PNG)
+
+Class: Topicos de bases de datos <br>
+Code: 8289 <br>
+Members:
+
+    Felipe - @
+    Oscar Correa - @oe_correcha
+
+## Table of Contents
+
+- <a href='#1'>1. Introducción</a>
+- <a href='#2'>2. Definiciones</a>
+- <a href='#3'>3. Objetivos</a>
+    - <a href='#3.1'>3.1 Objetivo principal</a>
+    - <a href='#3.2'>3.2 Objetivos secundarios</a>
+- <a href='#4'>4. Contexto</a>
+- <a href='#5'>5. Datos</a>
+    - <a href='#5.1'>5.1 Información geoespacial (polígonos) del Gran Buenos Aires</a>
+    - <a href='#5.2'>5.2 Información del censo</a>
+    - <a href='#5.3'>5.3 Información de la encuesta de bienestar</a>
+- <a href='#6'>6. Alcance</a>
+- <a href='#7'>7. Preguntas de negocio</a>
+- <a href='#8'>8. Resultados esperados</a>
+- <a href='#9'>9. Atributos de Calidad</a>
+- <a href='#10'>10. Descripción de la Arquitectura</a>
+    - <a href='#10.1'>10.1 Diagramas de Arquitectura</a>
+    - <a href='#10.2'>10.2 Componentes</a>
+    - <a href='#10.3'>10.3 Flujo de Datos</a>
+    - <a href='#10.4'>10.4 Componentes</a>
+    - <a href='#10.5'>10.5 Tecnologías Utilizadas</a>
+- <a href='#11'>11. Instalación y Configuración</a>
+    - <a href='#11.1'>11.1 Requisitos Previos</a>
+    - <a href='#11.2'>11.2 Uso local de la App </a>
+    - <a href='#11.3'>11.3 Desplegar usando GitPod </a>
+- <a href='#12'>12. Uso del Proyecto</a>
+    - <a href='#12.1'>12.1 Guía de Usuario</a>
+    - <a href='#12.2'>12.2 Guía de Usuario</a>
+
+
+
+## <a id='1'>Introducción </a>
 
 - **Descripción del Proyecto:** 
  
@@ -10,23 +51,23 @@ Teniendo en cuenta las necesidades del cliente, proponemos el proyecto de análi
 
 El cliente, empresa dedicada a la comercialización de vestuario, busca comprender mejor a sus clientes B2B en la ciudad. Para ello, se propone un proyecto de análisis geoespacial que tiene como objetivos principales:
 
-## Definiciones
+## <a id='2'>Definiciones </a> 
 
 - **B2B:** son empresas o entidades que ofrecen productos, servicios o soluciones a otras empresas en lugar de vender directamente a consumidores finales.
 
-## Objetivo:
+## <a id='3'>Objetivos </a> 
 
-### Objetivo principal:
+### <a id='3.1'>Objetivo principal </a> 
 
 Implementar arquitectura web para la ejecución de un análisis geoespacial estableciendo polígonos de datos que permitan a la compañía mejorar sus estrategias de marketing y potenciar sus ventas en determinados lugares específicos en la ciudad de Buenos Aires (ARG).
 
-### Objetivos secundarios: 
+### <a id='3.2'>Objetivos secundarios </a> 
 
 - Recopilar información a través de una base de datospara promocionar productos
 - Ofrecer eficiencia a la exploración, Preparacion y visualizacin de los datos.
 - Organizar información geográfica de los clientes potenciales a través de elementos de georreferenciación 
 
-- **Contexto:**
+## <a id='4'>Contexto </a> 
 
 El proyecto se centrará en mapear la ubicación precisa de los clientes, creando una representación visual detallada de su distribución espacial. Esta información nos permitirá identificar concentraciones de clientes, zonas de potencial crecimiento y áreas que podrían estar subatendidas.
 
@@ -39,69 +80,78 @@ El proyecto de análisis geoespacial incluirá los siguientes pasos:
 - Segmentación del mercado: Se segmentará el mercado en grupos de clientes con características y necesidades similares.
 - Desarrollo de estrategias: Se desarrollarán estrategias de ventas y marketing dirigidas a los segmentos de clientes específicos.
 
-Tipo de proyecto: Incremental.
+Tipo de proyecto: **Incremental**.
 
-## Datos 
-
+## <a id='5'>Datos </a> 
+ 
 Se utilizarán los siguientes conjuntos de datos
 
-- Información geoespacial (polígonos) del Gran Buenos Aires:
-    - Base de datos a utilizar: MongoDB.
-    Justificación: El uso será limitado y no se necesitarán funciones avanzadas (intersección, unión y búfer). Inicialmente, se requiere calcular distancias desde el punto de la empresa hasta los clientes. Es necesario que la base de datos pueda escalar horizontalmente, ya que los polígonos pueden aumentar en el futuro. Además, su uso es más sencillo comparado con PostGIS, el cuál está diseñado para consultas más complejas como intersección, unión y búfer. Ademas, Información encriptada del cliente (Edad, Género, posición geográfica (longitud y latitud), grupo asignado)
-    1. Mongo es una base de datos especializadas en geospacial para el almacenamiento
-    2. Mongo es la ideal para subir archivos JSON dado a la data 
-    3. No se usan bases de datos relacionales debido a que la complegidad de usar datos como **longitud y latitud** 
+### <a id='5.1'>Información geoespacial (polígonos) del Gran Buenos Aires </a> 
 
-Base de datos **db_javeraian**, Colleccion **poligonos_buenos_aires**
-a continuacion los datos del **JSON**
-![tipos_datos_mongo.png](doc/img/tipos_datos_mongo.png)
+- Base de datos a utilizar: MongoDB.
+- Justificación: El uso será limitado y no se necesitarán funciones avanzadas (intersección, unión y búfer). Inicialmente, se requiere calcular distancias desde el punto de la empresa hasta los clientes. Es necesario que la base de datos pueda escalar horizontalmente, ya que los polígonos pueden aumentar en el futuro. Además, su uso es más sencillo comparado con PostGIS, el cuál está diseñado para consultas más complejas como intersección, unión y búfer. Ademas, Información encriptada del cliente (Edad, Género, posición geográfica (longitud y latitud), grupo asignado).
+    
+    1. Mongo es una base de datos especializadas en geospacial para el almacenamiento.
+    2. Mongo es la ideal para subir archivos JSON dado a la data.
+    3. No se usan bases de datos relacionales debido a que la complegidad de usar datos como **longitud y latitud**.
 
-- Información del censo.  
-    - Base de datos a utilizar: SQL Postgres.
-    Justificación: La información original no tiene un formato definido; sin embargo, todos los barrios tienen la misma información: nombre del barrio, número de hombres, número de mujeres y total por edades desde 0 a 110 años (años legales) y que no cuenta con una alta latencia en transacionalidades por segundo. Por lo tanto, se organiza en formato tabular por barrio y su contenido. Se podría usar MongoDB si se quisiera adicionar información única de cada barrio (número de parques, número de playas, etc.), pero como en este caso no es necesario, se elige usar SQL.
-datos se almacenan en la base de datos **jave_database** tabla **census_data** a continuacion los siguientes **columnas**:
+- Base de datos **db_javeraian**
+- Colleccion **poligonos_buenos_aires** 
+- Muestra de datos: **JSON**
 
-![tipos_datos_postgres.png](doc/img/tipos_datos_postgres.png)
+    ![tipos_datos_mongo.png](doc/img/tipos_datos_mongo.png)
 
-- Información de la encuesta de bienestar. 
-    - Base de datos a utilizar: SQL.
-    Justificación: La información se manejará a nivel de personas individuales en lugar de casas u hogares, lo que nos proporciona una estructura de datos definida y permite el uso de SQL
+### <a id='5.2'>Información del censo </a> 
+
+- Base de datos a utilizar: SQL Postgres.
+- Justificación: La información original no tiene un formato definido; sin embargo, todos los barrios tienen la misma información: nombre del barrio, número de hombres, número de mujeres y total por edades desde 0 a 110 años (años legales) y que no cuenta con una alta latencia en transacionalidades por segundo. Por lo tanto, se organiza en formato tabular por barrio y su contenido. Se podría usar MongoDB si se quisiera adicionar información única de cada barrio (número de parques, número de playas, etc.), pero como en este caso no es necesario, se elige usar SQL.
+
+- Base de datos **jave_database**
+- tabla **census_data** 
+- Muestra de datos: **columnas**
+
+    ![tipos_datos_postgres.png](doc/img/tipos_datos_postgres.png)
+
+### <a id='5.3'>Información de la encuesta de bienestar </a> 
+
+- Base de datos a utilizar: SQL.
+- Justificación: La información se manejará a nivel de personas individuales en lugar de casas u hogares, lo que nos proporciona una estructura de datos definida y permite el uso de SQL
+
+Información adicional
 
 ![alt text](doc/img/tabla_postgis_mongo.PNG)
 
 ![alt text](doc/img/tabla_sql_mongo.PNG)
 
-- **Alcance:**  
+## <a id='6'>Alcance </a>  
 
 Se implementara la siguiente arquitectura para la solucion de los objetivos planteados y resolver las necesidades de la empresa dedicada a la comercialización de vestuario
 
-    1. Se realiza lo siguiente
-        a. **Login**: Se realiza en el front-end en **HTML5** que es una aplicativos **Web** que interactua con el usuario para ingresar al sistema con credenciales usuario o telefono y su contraseña además interactuar en el Back-end con **Python** para las conexiones de validacion del usario hacia la base de datos **Cassandra** dado a sus nodos podemos consultar por usurio o telefono mejorando la velocidad de respuesta y versatilidad y eficiencia 
+Se realiza lo siguiente:
 
-        b. **Data Censo: ** Se realiza en el front-end en **HTML5** un aplicativo **Web** que interactua con el usuario para visualizar los insumos de data .csv a consumir por el sistema que interactua con **Python** para realizar los inserts a las bases de datos **Postgres** en sql relacionales
+a. **Login**: Se realiza en el front-end con **HTML5**, que es una aplicación **web** que interactúa con el usuario para ingresar al sistema con credenciales de usuario o teléfono y su contraseña. Además, interactúa en el back-end con **Python** para las conexiones de validación del usuario hacia la base de datos **Cassandra**. Gracias a sus nodos, podemos consultar por usuario o teléfono, mejorando la velocidad de respuesta, la versatilidad y la eficiencia.
 
-        c. **Data Buenos Aires:** Se realiza en el front-end en **HTML5** un aplicativo **Web** que interactura con el usuario para visualizar los insumos .geojson que interactua con **Python** para realizar los inserts en las base de datos de **MongoDb**
+b. **Data Censo**: Se desarrolla un aplicativo web en el front-end con **HTML5** que interactúa con el usuario para visualizar los insumos de datos en formato .csv o parquet que serán consumidos por el sistema. Este sistema interactúa con **Python** para realizar las inserciones en las bases de datos **PostgreSQL**, las cuales son bases de datos relacionales.
+
+c. **Data Buenos Aires:** Se desarrolla en el front-end un aplicativo web en **HTML5** que permite al usuario visualizar información geográfica en formato **GeoJSON**. Este aplicativo interactúa con **Python** para realizar las inserciones en la base de datos **MongoDB**.
         
-        d.**Mapas Analítica:** Se utiliza un front-end **Kepler.gl** y **HTML5** para la visualización de los mapas que interactuan con el usuarion para ver la exploracion y preparacion que realizo el aplicativo para encontrar los analisis con la finalidad de evidenciar estadisticamente datos significaativos de donde mas popular se comercializa vestidos 
+d.**Mapas Analítica:** Se utiliza un front-end compuesto por **Kepler.gl** y **HTML5** para la visualización de los mapas. Los mapas interactúan con el usuario para permitirle observar la exploración y preparación de datos que ha realizado el aplicativo. Esta exploración tiene como objetivo encontrar análisis que permitan evidenciar estadísticamente los datos más relevantes en cuanto a la ubicación donde se comercializan más vestidos.
 
-        e.**Jupiter:** Se utiliza en la parte de backend para la exploración y preparación de los datos con la finalidad de que sevisualicen los datos de buenos aires y los clientes
+e.**Jupiter:** Se utiliza en la parte del back-end para la exploración y preparación de los datos con la finalidad de visualizar los datos de Buenos Aires y sus clientes.
 
-        f.**Repositorio:** Se utiliza un controlador de repositorios **Git-Hub** para el control de versiones
+f.**Repositorio:** Se utiliza un controlador de repositorios **GitHub** para el control de versiones.
         
-        g.**Data proveedores:** Se utiliza la data de los provedores como insumos para iniciar con los analisis, exploración y preparación de los datos **.csv** y **.geojson** y es open source y para que no se compromentan nombres se limpian desde el inicio
+g.**Data proveedores:** Se utiliza la data de los proveedores como insumo para iniciar con los análisis, exploración y preparación de los datos en formato **.csv**, **parquet** y **.geojson**. La data es open source y para evitar comprometer nombres, se limpia desde el inicio.
 
-        h.**Docker:** Se utiliza las contenedores con patron per servises para contenerizar las bases de datos y el aplicativo
+h.**Docker:** Se utilizan contenedores con patrón por servicios para contenerizar las bases de datos y el aplicativo.
 
-![arquitectura.png](doc/img/arquitectura.png)
+## <a id='7'>Preguntas de negocio  </a>  
 
-### Preguntas de negocio 
+- ¿Dónde se encuentran los mejores clientes?
+- ¿Los mejores o los peores clientes se encuentran más cerca o más lejos de la ubicación central?
+- ¿Existe una asociación entre los mejores clientes y mayores ingresos?
 
-- Donde se encuentran los mejores clientes
-- Los mejores o los peores se encuentran mas cerca o mas lejos
-- Los mejores estan asociados a ingresos?
-
-
-### Resultados esperados 
+## <a id='8'>Resultados esperados  </a>  
 
 El proyecto se espera que resulte en los siguientes resultados:
 
@@ -110,71 +160,211 @@ El proyecto se espera que resulte en los siguientes resultados:
 - Segmentos de mercado bien definidos con características y necesidades similares.
 - Estrategias de ventas y marketing más efectivas dirigidas a segmentos específicos del mercado.
 
-## Atributos de Calidad 
+## <a id='9'>Atributos de Calidad  </a>  
 
-- **Escalabilidad:** Estos contenedores son aislados y consistentes, lo que significa que la aplicación se ejecutará de la misma manera en cualquier entorno que soporte Docker.
-- **Rendimiento:** ya depende los recursos del servidor o la nuve que utilice en ram y almacenamiento
-- **Disponibilidad:** No maneja
-- **Seguridad:** Maneja temas de encriptación en password en base de datos utilizando hash
-- **Mantenibilidad:** Utiliza un patron MVC modelo vista controlador para la mantebilidad
-- **Confiabilidad:** Nivel de confiabilidad y cómo se garantizará.
+- **Escalabilidad:** Estos contenedores son aislados y consistentes, lo que significa que la aplicación se ejecutará de manera idéntica en cualquier entorno compatible con Docker.
+- **Rendimiento:** Ya depende de los recursos del servidor o la nube que utilices en RAM y almacenamiento.
+- **Disponibilidad:** No tiene la capacidad de manejar la disponibilidad.
+- **Seguridad:** Almacena contraseñas de forma segura en bases de datos utilizando funciones hash.
+- **Mantenibilidad:** Implementa el patrón MVC (Modelo-Vista-Controlador) para mejorar la mantenibilidad.
+- **Confiabilidad:** Implementa un sistema de monitoreo de errores para detectar y solucionar problemas de manera proactiva.
 
-## Descripción de la Arquitectura 
-- **Diagramas de Arquitectura:** Se encuentra con 
-- **Componentes:** Descripción de los principales componentes del sistema y sus responsabilidades.
-- **Flujo de Datos:** Cómo se mueven los datos a través del sistema. (##### falta definirlo)
+## <a id='10'>Descripción de la Arquitectura</a>  
 
-### Arquitectura 
-- Componentes
+### <a id='10.1'>Diagramas de Arquitectura </a> 
+
+![arquitectura.png](doc/img/arquitectura.png)
+
+### <a id='10.2'>Componentes </a> 
+
+1. Capa de Presentación (Flask App):
+
+- Implementada utilizando el framework Flask de Python.
+- Define las rutas HTTP para las diferentes funcionalidades de la aplicación.
+- Procesa las solicitudes HTTP, valida los datos de entrada y llama a la capa de lógica de negocios para realizar el análisis geoespacial.
+- Genera respuestas en formato HTML o JSON utilizando plantillas Jinja2 o librerías como Flask-JSON.
+
+2. Capa de Lógica de Negocios:
+
+- Contiene la lógica principal de la aplicación para realizar análisis geoespacial.
+- Utiliza librerías especializadas para el manejo de datos geoespaciales, como GeoPandas y Shapely.
+- Implementa funciones para procesar datos, generar mapas, realizar cálculos y análisis estadísticos.
+- Se comunica con la capa de acceso a datos para obtener y almacenar datos geoespaciales.
+
+3. Capa de Acceso a Datos:
+
+- Abstrae la interacción con las fuentes de datos geoespaciales.
+- Soporta diferentes tipos de fuentes de datos, como bases de datos relacionales, NoSQL, APIs y servicios web geoespaciales.
+- Utiliza librerías y drivers específicos para cada tipo de fuente de datos.
+- Proporciona una interfaz sencilla para que la capa de lógica de negocios pueda acceder a los datos geoespaciales (mapas).
+
+### <a id='10.3'>Flujo de Datos </a>
+
+1. El usuario envía una solicitud HTTP a la capa de presentación (Flask App) utilizando un navegador web o una aplicación cliente. La solicitud incluye información sobre el análisis geoespacial que se desea realizar, como los datos de entrada, los parámetros de análisis y el formato de salida deseado.
+
+2. La capa de presentación valida la solicitud para asegurarse de que los datos de entrada son correctos y completos. Luego, crea un objeto de solicitud que contiene toda la información relevante de la solicitud.
+
+3. La capa de presentación envía el objeto de solicitud a la capa de lógica de negocios. La capa de lógica de negocios utiliza el objeto de solicitud para determinar el tipo de análisis geoespacial que se debe realizar y los datos necesarios.
+
+4. La capa de lógica de negocios llama a la capa de acceso a datos para obtener los datos geoespaciales necesarios del almacenamiento. La capa de acceso a datos utiliza los parámetros de la solicitud para identificar y recuperar los datos relevantes de las fuentes de datos correspondientes.
+
+5. Una vez que la capa de lógica de negocios tiene los datos necesarios, procede a realizar el análisis geoespacial. Esto puede implicar procesar datos, generar mapas, realizar cálculos y análisis estadísticos.
+
+6. La capa de lógica de negocios transforma los resultados del análisis en un formato adecuado para la presentación. Esto puede implicar convertir datos en mapas, gráficos, tablas o estructuras de datos JSON.
+
+7. La capa de lógica de negocios devuelve los resultados formateados a la capa de presentación.
+
+8. La capa de presentación utiliza los resultados formateados para generar una respuesta HTTP para el usuario. La respuesta puede incluir HTML para mostrar una página web con los resultados del análisis pueda procesar los datos.
+
+9. La capa de presentación envía la respuesta HTTP al usuario. El navegador web del usuario muestra la página HTML o la aplicación cliente procesa los datos JSON.
+
+### <a id='10.4'>Componentes </a>
+
 ![arquitectura_componetes.png](doc/img/arquitectura_componetes.png)
 
-## Tecnologías Utilizadas
+### <a id='10.5'>Tecnologías Utilizadas </a>
+
 - **Lenguajes de Programación:** Se utilizara Python, HTML5, JavaScript
 - **Frameworks y Librerías:** keplergl, dash, Flask
-- **Plataformas y Servicios:** Github, netlify, Docker
+- **Plataformas y Servicios:** Github, netlify, Docker, GitPod
 
-## Configuración e Instalación
-- **Requisitos Previos:** Tener Docker instalado
+## <a id='11'>Instalación y Configuración</a>  
 
-### <a id='1'>Local usage of App </a>
+### <a id='11.1'>Requisitos Previos </a> 
 
-1. Download the repository.
+Requisitos previos: Tener Docker instalado y ganas.
 
-```bash
-ssh git clone repositorio (add)
-```
+### <a id='11.2'>Uso local de la App </a> 
 
-2. Navigate to the xxx folder.
+1. Descargar el repositorio.
 
 ```bash
-cd folder/
+ssh git clone git@github.com:japipe05/jave_buenos_aires_py_cmp.git
 ```
 
-3. Run the following Docker command:
+2. Ingrese a la carpeta jave_buenos_aires_py_cmp.
 
 ```bash
-docker compose build
+cd jave_buenos_aires_py_cmp
 ```
-After
+
+3. Ejecute el siguiente comando Docker:
+
+![Ejecucion local](doc/img/local1.PNG)
 
 ```bash
-docker compose up
+docker compose up -d --build
 ```
 
-4. Navigate to the "App" folder to run the App application, and execute it with the following instruction.
+4. Nota: La base de datos Cassandra requiere un tiempo de arranque de aproximadamente 7 minutos. Se sugiere aguardar este período antes de ejecutar el siguiente comando.
+
+![Ejecucion local2](doc/img/local2.PNG)
+
+5. En su navegador de preferencia ingrese la siguiente dirección web: 
 
 ```bash
-ssh python3 app.py
+http://127.0.0.1:5000
 ```
 
-5. To access the app, open your preferred browser and enter the following command: (verificar si es 8080)
+![alt text](doc/img/local3.PNG)
+
+Al acceder al sitio web, se mostrará la página principal. Para continuar, deberá registrarse con un usuario, teléfono y contraseña. Luego, se le presentará la siguiente vista.
+
+![alt text](doc/img/local4.PNG)
+
+Los mapas generados se encuentran disponibles para su consulta en la pestaña Dashboards.
+
+![alt text](doc/img/local5.PNG)
+
+Al seleccionar un mapa, se abrirá una nueva página con el mapa en detalle.
+
+![alt text](doc/img/local6.PNG)
+
+Para finalizar, haga clic en "Cerrar sesión" y luego cierre el navegador.
+
+### <a id='11.3'>Desplegar usando GitPod </a> 
+
+1. Ingrese al sitio web de GitPod con el siguiente enlace.
 
 ```bash
-http://localhost:8080/
+https://gitpod.io/#https://github.com/japipe05/jave_buenos_aires_py_cmp
+```
+![usando gitpob](doc/img/online1.PNG)
+
+2. Acceda o cree una cuenta para ingresar al espacio del proyecto.. 
+
+![usando gitpob2](doc/img/online2.PNG)
+
+3. Al ingresar, la app de Gitpod se cargará e iniciará la instalación de los requisitos del sistema. Espere a que finalice el proceso.
+
+![usando gitpob3](doc/img/online3.PNG)
+
+![usando gitpob4](doc/img/online4.PNG)
+
+4. Ejecute el siguiente comando Docker:
+
+```bash
+docker-compose up -d --build
+```
+![usando gitpob5](doc/img/online5.PNG)
+
+5. Nota: La base de datos Cassandra requiere un tiempo de arranque de aproximadamente 7 minutos. Se sugiere aguardar este período antes de ejecutar el siguiente comando.
+
+6. Ejecute el siguiente comando Docker:
+
+```bash
+docker ps
 ```
 
-## Uso del Proyecto
-- **Guía de Usuario:** Instrucciones sobre cómo usar el proyecto.
+![usando gitpobr](doc/img/onliner.PNG)
+
+Podrá visualizar los Hash de los contenedores. Tome nota del Hash del contenedor **jave_buenos_aires_py_cmp-app**
+
+7. Ejecute el siguiente comando Docke, no olvide reemplazar el hash de su repositorio:
+
+```bash
+docker ps
+```
+
+![usando gitpob6](doc/img/online6.PNG)
+
+8. Mantenga presionada la tecla Ctrl (o Cmd en Mac) y haga clic en la dirección https://....
+
+Nota: Tenga en cuenta que este es un entorno virtual, por lo que no funcionara si ingresa esta dirección directamente en un navegador en su pc. <br>
+
+Este link le enviara a un sitio parecido al siguiente: 
+
+![usando gitpob7](doc/img/online7.PNG)
+
+
+5. En su navegador de preferencia ingrese la siguiente dirección web: 
+
+```bash
+http://127.0.0.1:5000
+```
+
+Al acceder al sitio web, se mostrará la página principal. Para continuar, deberá registrarse con un usuario, teléfono y contraseña. Luego, se le presentará la siguiente vista.
+
+![alt text](doc/img/local4.PNG)
+
+Los mapas generados se encuentran disponibles para su consulta en la pestaña Dashboards.
+
+![alt text](doc/img/local5.PNG)
+
+Al seleccionar un mapa, se abrirá una nueva página con el mapa en detalle.
+
+![alt text](doc/img/local6.PNG)
+
+Para finalizar, haga clic en "Cerrar sesión" y luego cierre el navegador.
+
+
+
+
+## <a id='12'>Uso del Proyecto </a> 
+
+### <a id='12.1'>Guía de Usuario </a> 
+
+Instrucciones sobre cómo usar el proyecto.
 
 Al iniciar un mapa con la aplicación Kepler se mostrará una vista similar a la que se muestra en la siguiente imagen.
 
@@ -192,7 +382,9 @@ Al despliegar la viñeta 1 se mostrará una vista similar a la que se muestra en
 3. Capas de datos cargadas actualmente; puede haber más de una capa a la vez.
 4. Botón para crear una nueva capa, disponible solo si se tienen datos cargados previamente.
 
-- **Ejemplos de Uso:** Ejemplos prácticos de cómo interactuar con el sistema.
+### <a id='12.2'>Ejemplos de Uso </a> 
+
+Ejemplos prácticos de cómo interactuar con el sistema.
 
 Al iniciar un mapa, en este ejemplo, los barrios y comunas del Gran Buenos aires, se mostrará una vista similar a la que se muestra en la siguiente imagen.
 
@@ -201,11 +393,20 @@ Al iniciar un mapa, en este ejemplo, los barrios y comunas del Gran Buenos aires
 1. Mapa
 2. Datos y capas cargados actualmente, los cuales se pueden modificar
 
-(##### agregar videos)
-
 En laviñeta de filtros se pueden aplicar filtros a necesidad, se mostrará una vista similar a la que se muestra en la siguiente imagen.(#### modificar imagen)
 
 ![alt text](doc/img/guia4.PNG) 
+
+<hr>
+
+[Go to Top](#Table-of-Contents)
+
+
+
+
+
+
+
 
 ## Pruebas y Validación (##### ni idea)
 Estrategia de Pruebas: Cómo se realizarán las pruebas para asegurar la calidad.
