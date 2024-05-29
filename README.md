@@ -3,7 +3,7 @@
 
 ![alt text](doc/img/logo.PNG)
 
-Class: Topicos de bases de datos <br>
+Class: Tópicos de bases de datos <br>
 Code: 8289 <br>
 Members:
 
@@ -63,8 +63,8 @@ Implementar arquitectura web para la ejecución de un análisis geoespacial esta
 
 ### <a id='3.2'>Objetivos secundarios </a> 
 
-- Recopilar información a través de una base de datospara promocionar productos
-- Ofrecer eficiencia a la exploración, Preparacion y visualizacin de los datos.
+- Recopilar información a través de una base de datos para promocionar productos
+- Ofrecer eficiencia a la exploración, Preparación y visualización de los datos.
 - Organizar información geográfica de los clientes potenciales a través de elementos de georreferenciación 
 
 ## <a id='4'>Contexto </a> 
@@ -89,14 +89,14 @@ Se utilizarán los siguientes conjuntos de datos
 ### <a id='5.1'>Información geoespacial (polígonos) del Gran Buenos Aires </a> 
 
 - Base de datos a utilizar: MongoDB.
-- Justificación: El uso será limitado y no se necesitarán funciones avanzadas (intersección, unión y búfer). Inicialmente, se requiere calcular distancias desde el punto de la empresa hasta los clientes. Es necesario que la base de datos pueda escalar horizontalmente, ya que los polígonos pueden aumentar en el futuro. Además, su uso es más sencillo comparado con PostGIS, el cuál está diseñado para consultas más complejas como intersección, unión y búfer. Ademas, Información encriptada del cliente (Edad, Género, posición geográfica (longitud y latitud), grupo asignado).
+- Justificación: El uso será limitado y no se necesitarán funciones avanzadas (intersección, unión y búfer). Inicialmente, se requiere calcular distancias desde el punto de la empresa hasta los clientes. Es necesario que la base de datos pueda escalar horizontalmente, ya que los polígonos pueden aumentar en el futuro. Además, su uso es más sencillo comparado con PostGIS, el cuál está diseñado para consultas más complejas como intersección, unión y búfer. Además, Información encriptada del cliente (Edad, Género, posición geográfica (longitud y latitud), grupo asignado).
     
-    1. Mongo es una base de datos especializadas en geospacial para el almacenamiento.
+    1. Mongo es una base de datos especializadas en geoespacial  para el almacenamiento.
     2. Mongo es la ideal para subir archivos JSON dado a la data.
-    3. No se usan bases de datos relacionales debido a que la complegidad de usar datos como **longitud y latitud**.
+    3. No se usan bases de datos relacionales debido a que la complejidad  de usar datos como **longitud y latitud**.
 
 - Base de datos **db_javeraian**
-- Colleccion **poligonos_buenos_aires** 
+- Colección  **poligonos_buenos_aires** 
 - Muestra de datos: **JSON**
 
     ![tipos_datos_mongo.png](doc/img/tipos_datos_mongo.png)
@@ -125,7 +125,7 @@ Información adicional
 
 ## <a id='6'>Alcance </a>  
 
-Se implementara la siguiente arquitectura para la solucion de los objetivos planteados y resolver las necesidades de la empresa dedicada a la comercialización de vestuario
+Se implementara la siguiente arquitectura para la solución de los objetivos planteados y resolver las necesidades de la empresa dedicada a la comercialización de vestuario
 
 Se realiza lo siguiente:
 
@@ -320,7 +320,7 @@ docker ps
 
 Podrá visualizar los Hash de los contenedores. Tome nota del Hash del contenedor **jave_buenos_aires_py_cmp-app**
 
-7. Ejecute el siguiente comando DockeR, no olvide reemplazar el hash de su repositorio:
+7. Ejecute el siguiente comando Docker, no olvide reemplazar el hash de su repositorio:
 
 ```bash
 docker logs <id contenedor>
@@ -371,9 +371,9 @@ Al iniciar un mapa con la aplicación Kepler se mostrará una vista similar a la
 ![alt text](doc/img/guia1.PNG)
 
 1. Viñeta para desplegar funciones relacionadas con los datos.
-2. Bones para desplegar funciones relacionadas con el mapa
+2. Botones para desplegar funciones relacionadas con el mapa
 
-Al despliegar la viñeta 1 se mostrará una vista similar a la que se muestra en la siguiente imagen.
+Al desplegar la viñeta 1 se mostrará una vista similar a la que se muestra en la siguiente imagen.
 
 ![alt text](doc/img/guia2.PNG)
 
@@ -543,7 +543,7 @@ jave_buenos_aires_py_cmp/
          - **archi/**: Carpeta donde se alojan los archivos de archi
              - **arquitectura_componetes.archimate**: Diagrama de componentes de arquitectura
              - **arquitectura_componetes.archimate.bak**: Diagrama de componentes de arquitectura
-        - **img/**:imagenes de instalacion y de la aplicación
+        - **img/**:imagenes de instalación y de la aplicación
             - **architecture.png**: Diagrama de componentes de arquitectura
             - **arquitectura.png**: Diagrama de arquitectura de la aplicación
             - **guia1.PNG**: Diagramas de kepler filtros
@@ -570,13 +570,13 @@ jave_buenos_aires_py_cmp/
             - **df_census.csv**: Datos que se aloja en postgres
             - **dataset.parquet.gzip**: Datos que se utilizan para el anlisis desde jupiter para la generacion de los archivos kepler
         - **outputs/**:archivos del repositorio de los archivos keppler donde se encuentra en anlisis de los poligonos de buenos aires
-            - **map1.html**: mapa de kepler del primer analisis de los poligonos de buenos aires
-            - **map1.html**: mapa de kepler del primer analisis de los poligonos de buenos aires
-            - **map2.html**: mapa de kepler del segundo analisis de los poligonos de buenos aires
-            - **map3.html**: mapa de kepler del tercer analisis de los poligonos de buenos aires
+            - **map1.html**: mapa de kepler del primer análisis de los poligonos de buenos aires
+            - **map1.html**: mapa de kepler del primer análisis de los poligonos de buenos aires
+            - **map2.html**: mapa de kepler del segundo análisis de los poligonos de buenos aires
+            - **map3.html**: mapa de kepler del tercer análisis de los poligonos de buenos aires
             - **respuestas_del_negocio.html**: respuestas para el negocio de análisis para la captación de los clientes en buenos aires
         - **src/**: componentes de la aplicación
-            - **config/**: configuracion de variables de la aplicación
+            - **config/**: configuración de variables de la aplicación
                 - **envs.py**: variables de entorno utilizada para las conexiones de base de datos
             - **database/**: conexiones de base de datos
                 - **Cassandra/**: Conexiones de cassandra
@@ -584,36 +584,36 @@ jave_buenos_aires_py_cmp/
                 - **MongoDb/**: Conexiones de mongoDb
                        **conexion.py** Conexión hacia MongoDb
                 - **postgres/**: Conexiones de postgres
-                      - **conexion.py** Conexión hacia posgtgres
-             - **models/**: modelos de la aplicacion para
+                      - **conexion.py** Conexión hacia posgtgresf
+             - **models/**: modelos de la aplicación para
                  - **censo_clientes.py** ingesta de datos y querys realizadas hacia los repositorios de base de datos postgres
                  - **login.py** consulta de los nodos de cassandra
                  - **poligonos_buenos_aires.py** consulta a las bases de datos de mongoDb
              - **routes/**: rutas para la consultas de la aplicación
-                 - **censo_cliente.py** CRUD de los datos del cliente hacia el front-end que se obtendra de potgres
-                 - **poligonos_buenos_aires.py** CRUD de los datos del cliente hacia el front-end que se obtendra de mongoDb
-                 - **login.py** login de la aplicación utilizando casandra para que pueda ingresar por telefono o usuario en multiples nodos optimizando y mejorando la disponivilidad al ingreso de la sesion y multimples usuarios
+                 - **censo_cliente.py** CRUD de los datos del cliente hacia el front-end que se obtendrá de potgres
+                 - **poligonos_buenos_aires.py** CRUD de los datos del cliente hacia el front-end que se obtendrá de mongoDb
+                 - **login.py** login de la aplicación utilizando casandra para que pueda ingresar por teléfono o usuario en múltiples nodos optimizando y mejorando la disponivilidad al ingreso de la sesión y multimples usuarios
                  - **registrando.py** CRUD registro de la aplicación en cassandra
                  - **mostrar_archivo_html.py** front-end donde se alojan los archivos a visualizar los archivos keppler
-             - **static/**: muestra los archivos de css, javascript utilizados en el front-end e imagenes utilizadas 
+             - **static/**: muestra los archivos de css, javascript utilizados en el front-end e imágenes utilizadas 
                  - **css/** css para la visualización del frontend utilizados
-                     - **styles.css** configuracion de los efectos utilizados en el fornt-end
-                 - **js/** js archivos para el control de los moviemintos y efectos
-                     - **script.css** mobiminetos y efectos utilizados en la parte del front-end
-                - **img/** imagenes utilizadas en la app
+                     - **styles.css** configuración de los efectos utilizados en el fornt-end
+                 - **js/** js archivos para el control de los movimientos y efectos
+                     - **script.css** movimientos y efectos utilizados en la parte del front-end
+                - **img/** imágenes utilizadas en la app
                      - **home.gif** animado del home
                      - **login-bg.png** logo login javeriana
-                - **Templates/** imagenes utilizadas en la app
-                     - **login.html** login de inicio de sesion
-                     - **registro.html** registro de la plicación
+                - **Templates/** imágenes utilizadas en la app
+                     - **login.html** login de inicio de sesión
+                     - **registro.html** registro de la aplicación
                      - **home.html** inicio del home de la aplicación
                      - **censo_cliente.html** pantalla de los datos del cliente
                      - **poligonos_buenos_aires.html** Datos de los poligonos de buenos aires
                      - **listadosweb.html** listas de html del repositorio
                 - **app.py** llamado de los routes y inicio de la aplicación
-                - **keep.ipynb** jupiter para el anlaisis de la exploracion y preparacion de los datos
-    - **.env** variables de entorno para accesos para la configuracion de usuarios en las bases de datos
-    - **Dockerfile** archivo de despliege de librerias de python utilizadas
-    - **README.md** detalle de la aplicacion con sus especificaciones tecnicas
+                - **keep.ipynb** jupiter para el anlaisis de la exploración y preparación de los datos
+    - **.env** variables de entorno para accesos para la configuración de usuarios en las bases de datos
+    - **Dockerfile** archivo de despliegue de librerías de python utilizadas
+    - **README.md** detalle de la aplicacién con sus especificaciones técnicas
     - **docker-compose.yml** Dokerización de las bases de datos de postgres, mongoDb, cassandra y la aplicación
-    - **requirements.txt** librerias necesarias para la aplicación
+    - **requirements.txt** librerías necesarias para la aplicación
