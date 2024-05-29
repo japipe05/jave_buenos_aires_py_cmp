@@ -320,10 +320,10 @@ docker ps
 
 Podrá visualizar los Hash de los contenedores. Tome nota del Hash del contenedor **jave_buenos_aires_py_cmp-app**
 
-7. Ejecute el siguiente comando Docke, no olvide reemplazar el hash de su repositorio:
+7. Ejecute el siguiente comando DockeR, no olvide reemplazar el hash de su repositorio:
 
 ```bash
-docker ps
+docker logs <id contenedor>
 ```
 
 ![usando gitpob6](doc/img/online6.PNG)
