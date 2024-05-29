@@ -401,23 +401,6 @@ En la sección de filtros, puede aplicar los filtros según sus necesidades, y s
 
 [Go to Top](#Table-of-Contents)
 
-
-
-
-
-
-
-
-## Pruebas y Validación
-Estrategia de Pruebas: Cómo se realizarán las pruebas para asegurar la calidad.
-Casos de Prueba: Ejemplos de casos de prueba que se utilizarán.
-Resultados Esperados: Resultados esperados de las pruebas.
- 
-## Pruebas y Validación
-Estrategia de Pruebas: Cómo se realizarán las pruebas para asegurar la calidad.
-Casos de Prueba: Ejemplos de casos de prueba que se utilizarán.
-Resultados Esperados: Resultados esperados de las pruebas.
-
 ## Mantenimiento y Soporte
 Guía de Mantenimiento: Procedimientos y mejores prácticas para mantener el sistema.
 Soporte: Cómo obtener ayuda y soporte para el proyecto.
