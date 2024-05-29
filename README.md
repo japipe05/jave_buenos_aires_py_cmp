@@ -7,7 +7,7 @@ Class: Topicos de bases de datos <br>
 Code: 8289 <br>
 Members:
 
-    Felipe - @
+    Felipe Rodríguez- @japipe05
     Oscar Correa - @oe_correcha
 
 ## Table of Contents
@@ -224,7 +224,7 @@ El proyecto se espera que resulte en los siguientes resultados:
 
 ### <a id='10.5'>Tecnologías Utilizadas </a>
 
-- **Lenguajes de Programación:** Se utilizara Python, HTML5, JavaScript
+- **Lenguajes de Programación:** Se utilizara Python, HTML5, JavaScript, css, 
 - **Frameworks y Librerías:** keplergl, dash, Flask
 - **Plataformas y Servicios:** Github, netlify, Docker, GitPod
 
@@ -340,7 +340,7 @@ Este link le enviara a un sitio parecido al siguiente:
 5. En su navegador de preferencia ingrese la siguiente dirección web: 
 
 ```bash
-http://127.0.0.1:5000
+ojo Ctrl (o Cmd en Mac) http://127.0.0.1:5000
 ```
 
 Al acceder al sitio web, se mostrará la página principal. Para continuar, deberá registrarse con un usuario, teléfono y contraseña. Luego, se le presentará la siguiente vista.
@@ -408,63 +408,149 @@ En la sección de filtros, puede aplicar los filtros según sus necesidades, y s
 
 
 
-## Pruebas y Validación (##### ni idea)
+## Pruebas y Validación
 Estrategia de Pruebas: Cómo se realizarán las pruebas para asegurar la calidad.
 Casos de Prueba: Ejemplos de casos de prueba que se utilizarán.
 Resultados Esperados: Resultados esperados de las pruebas.
  
-## Pruebas y Validación (##### ni idea)
+## Pruebas y Validación
 Estrategia de Pruebas: Cómo se realizarán las pruebas para asegurar la calidad.
 Casos de Prueba: Ejemplos de casos de prueba que se utilizarán.
 Resultados Esperados: Resultados esperados de las pruebas.
 
-## Mantenimiento y Soporte (##### ni idea)
+## Mantenimiento y Soporte
 Guía de Mantenimiento: Procedimientos y mejores prácticas para mantener el sistema.
 Soporte: Cómo obtener ayuda y soporte para el proyecto.
 
-## Contribuciones (##### ni idea)
+## Contribuciones
 Guía de Contribución: Cómo otros pueden contribuir al proyecto.
 Políticas de Código: Normas y políticas para contribuir con código al proyecto.
 
-## Licencia (##### ni idea)
-Licencia del Proyecto: Detalles sobre la licencia bajo la cual se distribuye el proyecto.
+## Licencia
+Licencia del Proyecto: Detalles sobre la licencia bajo la cual se distribuye el proyecto open source.
 
+---
 
-
-
-
-
-
-
-# Instalacion
-pip install pymongo pandas flask python-dotenv xlrd openpyxl
-python upload_data.py
-python app.py
-
-docker-compose up -d --build
-
-usuario:felipe o 3224612380
-pass jave2024
-
-
-usuario: oscar o 3228344230
-pass jave2024
-
-
-# Subir archivos pesados 
-git lfs install
-git lfs track "*.gl.html"
-git lfs push --all origin main
-git add .
-git commit -m "carga pureba"
-git push
-
-# traer a local
-git checkout main 
-git fetch origin main 
-git merge origin/main
-
-# subir
-git add . 
-git commit -m "cargue1" 
-git push
+# Estructura del repositorio:
+``` 
+jave_buenos_aires_py_cmp/
+├── Doc/
+│   ├── archi/
+│   │   └── arquitectura_componetes.archimate
+│   │   └── arquitectura_componetes.archimate.bak
+│   ├── img/
+│   │   └── architecture.png
+│   │   └── arquitectura.png
+│   │   └── arquitectura_componetes.png
+│   │   └──  guia1.PNG
+│   │   └── guia2.PNG
+│   │   └── guia3.PNG
+│   │   └── guia4.PNG
+│   │   └── local1.PNG
+│   │   └── local2.PNG
+│   │   └── local3.PNG
+│   │   └── local4.PNG
+│   │   └── local5.PNG
+│   │   └── local6.PNG
+│   │   └── logo.PNG
+│   │   └── online1.PNG
+│   │   └── online2.PNG
+│   │   └── online3.PNG
+│   │   └── online4.PNG
+│   │   └── online5.PNG
+│   │   └── online6.PNG
+│   │   └── online7.PNG
+│   │   └── tabla_postgis_mongo.PNG
+│   │   └── tabla_sql_mongo.PNG
+│   │   └── tipos_datos_mongo.png
+│   │   └── tipos_datos_postgres.png
+├── insumos/
+│   └── RMBA.geojson
+│   └──  __init__.py
+│   └── dataset.parquet.gzip
+│   └── df_ba.geojson
+│   └──  df_censo.parquet.gzip
+│   └── df_census.csv
+│   └── df_clientes.parquet.gzip
+│   └── df_encuestas.parquet.gzip
+│   └── outputs/
+│   │   └── __init__.py
+│   │   └── map1.html
+│   │   └──  map2.html
+│   │   └── map3.html
+│   │   └── map4.html
+│   │   └── map5.html
+│   │   └── mapa_buenos_aires.html
+│   │   └── mapa_buenos_aires_prueba.html
+│   │   └── respuestas_del_negocio.html
+│   ├── src/
+│   │   ├── __pycache__/
+│   │   │    └── app.cpython-311.pyc
+│   │   ├── config/
+│   │   │    └── __init__.py
+│   │   │    └── envs.py
+│   │   ├── database/
+│   │   │    ├── cassandra/
+│   │   │    │    └── __init__.py
+│   │   │    │    └── conexion.py
+│   │   │    ├── mongo/
+│   │   │    │    └── __init__.py
+│   │   │    │    └── conexion.py
+│   │   │    ├── postgres/
+│   │   │    │    └── __init__.py
+│   │   │    │    └── conexion.py
+│   │   ├── models/
+│   │   │    └── __init__.py
+│   │   │    └── censo_clientes.py
+│   │   │    └── dash.py
+│   │   │    └── login.py
+│   │   │    └── poligonos_buenos_aires.py
+│   │   ├── routes/
+│   │   │    └── __init__.py
+│   │   │    └── censo_cliente.py
+│   │   │    └── login.py
+│   │   │    └── mostrar_archivo_html.py
+│   │   │    └── mostrar_htmls.py
+│   │   │    └── poligonos_buenos_aires.py
+│   │   │    └── principalindex.py
+│   │   │    └── registrando.py
+│   │   │    └── registro.py
+│   │   ├── static/
+│   │   │    ├── css/
+│   │   │    │    └── styles.css
+│   │   │    │    └── styleshome.css
+│   │   │    ├── img/
+│   │   │    │    └── home.gif
+│   │   │    │    └── home.jpg
+│   │   │    │    └── login-bg.png
+│   │   │    ├── js/
+│   │   │    │    └── main.js
+│   │   │    │    └── mainhome.js
+│   │   │    ├── scss/
+│   │   │    │    ├── base/
+│   │   │    │    │    └── _base.scss
+│   │   │    │    ├── components/
+│   │   │    │    │    └── _breakpoints.scss
+│   │   │    │    │    └── _login.scss
+│   │   │    │    ├── config/
+│   │   │    │    │    └── _variables.scss
+│   │   │    │    └── styles.scss
+│   │   ├── templates/
+│   │   │    └── censo_cliente.html
+│   │   │    └── contenidoweb.html
+│   │   │    └── error.html
+│   │   │    └── home.html
+│   │   │    └── index.html
+│   │   │    └── listadosweb.html
+│   │   │    └── login.html
+│   │   │    └── poligonos_buenos_aires.html
+│   │   │    └── registro.html
+│   │   └── app.py
+│   │   └── keep.ipynb
+│   │   └── preguntas_negocio.ipynb
+└── .env
+└── Dockerfile
+└── README.md
+└── docker-compose.yml
+└── requirements.txt
+```
