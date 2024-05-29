@@ -554,3 +554,83 @@ jave_buenos_aires_py_cmp/
 └── docker-compose.yml
 └── requirements.txt
 ```
+
+- **Doc/**:Carpeta de documentos de arquitectura
+    - **archi/**:Carpeta de documentos de arquitectura
+         - **archi/**: Carpeta donde se alojan los archivos de archi
+             - **arquitectura_componetes.archimate**: Diagrama de componentes de arquitectura
+             - **arquitectura_componetes.archimate.bak**: Diagrama de componentes de arquitectura
+        - **img/**:imagenes de instalacion y de la aplicación
+            - **architecture.png**: Diagrama de componentes de arquitectura
+            - **arquitectura.png**: Diagrama de arquitectura de la aplicación
+            - **guia1.PNG**: Diagramas de kepler filtros
+            - **guia2.PNG**: Diagramas de kepler mapas
+            - **guia3.PNG**: Diagramas de kepler filtros avanzados
+            - **guia4.PNG**: Diagramas de kepler poligonos
+            - **local1.PNG**: Instalaciones docker
+            - **local2.PNG**: Instalaciones docker
+            - **local3.PNG**: login app
+            - **local4.PNG**: home
+            - **local5.PNG**: repositorio de archivos kepler generados
+            - **local6.PNG**: Git pod instalaciones
+            - **online1.PNG**: Git pod instalaciones 1
+            - **online2.PNG**: Git pod instalaciones 2
+            - **online3.PNG**: Git pod instalaciones 3
+            - **online4.PNG**: Git pod instalaciones 4
+            - **online5.PNG**: Git pod instalaciones 5 
+            - **online6.PNG**: Git pod instalaciones 6
+            - **online7.PNG**: Git pod instalaciones 7
+            - **tabla_postgis_mongo.PNG**: tipos de datos de mongo
+            - **tipos_datos_postgres.png**: tipos de datos mongo
+        - **insumos/**:Fuentes origen de la data para el análisis
+            - **RMBA.geojson**: Datos del geoJson que se aloja en mongo DB
+            - **df_census.csv**: Datos que se aloja en postgres
+            - **dataset.parquet.gzip**: Datos que se utilizan para el anlisis desde jupiter para la generacion de los archivos kepler
+        - **outputs/**:archivos del repositorio de los archivos keppler donde se encuentra en anlisis de los poligonos de buenos aires
+            - **map1.html**: mapa de kepler del primer analisis de los poligonos de buenos aires
+            - **map1.html**: mapa de kepler del primer analisis de los poligonos de buenos aires
+            - **map2.html**: mapa de kepler del segundo analisis de los poligonos de buenos aires
+            - **map3.html**: mapa de kepler del tercer analisis de los poligonos de buenos aires
+            - **respuestas_del_negocio.html**: respuestas para el negocio de análisis para la captación de los clientes en buenos aires
+        - **src/**: componentes de la aplicación
+            - **config/**: configuracion de variables de la aplicación
+                - **envs.py**: variables de entorno utilizada para las conexiones de base de datos
+            - **database/**: conexiones de base de datos
+                - **Cassandra/**: Conexiones de cassandra
+                       **conexion.py** Conexión hacia cassandra
+                - **MongoDb/**: Conexiones de mongoDb
+                       **conexion.py** Conexión hacia MongoDb
+                - **postgres/**: Conexiones de postgres
+                      - **conexion.py** Conexión hacia posgtgres
+             - **models/**: modelos de la aplicacion para
+                 - **censo_clientes.py** ingesta de datos y querys realizadas hacia los repositorios de base de datos postgres
+                 - **login.py** consulta de los nodos de cassandra
+                 - **poligonos_buenos_aires.py** consulta a las bases de datos de mongoDb
+             - **routes/**: rutas para la consultas de la aplicación
+                 - **censo_cliente.py** CRUD de los datos del cliente hacia el front-end que se obtendra de potgres
+                 - **poligonos_buenos_aires.py** CRUD de los datos del cliente hacia el front-end que se obtendra de mongoDb
+                 - **login.py** login de la aplicación utilizando casandra para que pueda ingresar por telefono o usuario en multiples nodos optimizando y mejorando la disponivilidad al ingreso de la sesion y multimples usuarios
+                 - **registrando.py** CRUD registro de la aplicación en cassandra
+                 - **mostrar_archivo_html.py** front-end donde se alojan los archivos a visualizar los archivos keppler
+             - **static/**: muestra los archivos de css, javascript utilizados en el front-end e imagenes utilizadas 
+                 - **css/** css para la visualización del frontend utilizados
+                     - **styles.css** configuracion de los efectos utilizados en el fornt-end
+                 - **js/** js archivos para el control de los moviemintos y efectos
+                     - **script.css** mobiminetos y efectos utilizados en la parte del front-end
+                - **img/** imagenes utilizadas en la app
+                     - **home.gif** animado del home
+                     - **login-bg.png** logo login javeriana
+                - **Templates/** imagenes utilizadas en la app
+                     - **login.html** login de inicio de sesion
+                     - **registro.html** registro de la plicación
+                     - **home.html** inicio del home de la aplicación
+                     - **censo_cliente.html** pantalla de los datos del cliente
+                     - **poligonos_buenos_aires.html** Datos de los poligonos de buenos aires
+                     - **listadosweb.html** listas de html del repositorio
+                - **app.py** llamado de los routes y inicio de la aplicación
+                - **keep.ipynb** jupiter para el anlaisis de la exploracion y preparacion de los datos
+    - **.env** variables de entorno para accesos para la configuracion de usuarios en las bases de datos
+    - **Dockerfile** archivo de despliege de librerias de python utilizadas
+    - **README.md** detalle de la aplicacion con sus especificaciones tecnicas
+    - **docker-compose.yml** Dokerización de las bases de datos de postgres, mongoDb, cassandra y la aplicación
+    - **requirements.txt** librerias necesarias para la aplicación
